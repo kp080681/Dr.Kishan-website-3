@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Kishan Rao | Laparoscopic Surgeon in Mangalore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;650;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy-950:#0A171C;
+    --navy-900:#122730;
+    --navy-800:#1B3540;
+    --ivory-50:#F1F1EA;
+    --ivory-100:#E8E8DE;
+    --brass-500:#A9822E;
+    --brass-600:#8E6D26;
+    --ink-text:#14211F;
+    --ivory-text:#F3F3EC;
+    --header-h: 76px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--ivory-50);
+    color:var(--ink-text);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block; max-width:100%;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    height:var(--header-h);
+    background:rgba(241,241,234,0.88);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(169,130,46,0.16);
+    display:flex; align-items:center;
+  }
+  .header-inner{
+    width:100%; max-width:1400px; margin:0 auto; padding:0 32px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; flex-shrink:0; }
+  .brand-mark{
+    width:42px; height:42px; border-radius:50%; background:var(--navy-900);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .brand-mark svg{width:22px; height:22px;}
+  .brand-text{ display:flex; flex-direction:column; line-height:1.15; white-space:nowrap; }
+  .brand-name{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15.5px; letter-spacing:-0.005em; color:var(--navy-950); }
+  .brand-tag{ font-size:11.5px; font-weight:500; letter-spacing:0.02em; color:var(--brass-600); margin-top:1px; }
+  nav{ display:flex; align-items:center; gap:28px; }
+  nav a{ font-size:14px; font-weight:500; color:var(--navy-900); text-decoration:none; opacity:0.8; transition:opacity 0.15s ease; white-space:nowrap; }
+  nav a:hover{opacity:1;}
+  .header-cta{
+    flex-shrink:0; display:inline-flex; align-items:center; padding:10px 20px;
+    background:var(--navy-950); color:var(--ivory-text); font-size:13.5px; font-weight:600;
+    border-radius:3px; text-decoration:none; letter-spacing:0.01em; white-space:nowrap;
+    transition:background 0.15s ease;
+  }
+  .header-cta:hover{background:var(--navy-800);}
+  .nav-desktop-only{display:flex;}
+
+  /* ---------- HERO: single merged canvas ---------- */
+  .hero{
+    position:relative;
+    min-height:calc(100vh - var(--header-h));
+    max-height:920px;
+    display:grid;
+    grid-template-columns: minmax(0,1fr);
+  }
+  .hero-media{
+    grid-area: 1 / 1;
+    position:relative;
+    width:100%;
+    height:100%;
+    min-height:calc(100vh - var(--header-h));
+    max-height:920px;
+  }
+  .hero-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:56% 0%;
+    animation:slowZoom 20s ease-out forwards;
+
+    /* feather the left + bottom edges so the photo dissolves into the page
+       rather than sitting in a hard rectangle */
+    -webkit-mask-image:
+      linear-gradient(100deg, transparent 0%, transparent 4%, black 34%),
+      linear-gradient(to bottom, black 78%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image:
+      linear-gradient(100deg, transparent 0%, transparent 4%, black 34%),
+      linear-gradient(to bottom, black 78%, transparent 100%);
+    mask-composite: intersect;
+  }
+  @keyframes slowZoom{ from{transform:scale(1.0);} to{transform:scale(1.045);} }
+
+  /* a faint navy wash tying the fade tonally to the palette, kept off the face */
+  .hero-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(100deg, var(--navy-950) 0%, transparent 30%);
+    mix-blend-mode:multiply;
+    opacity:0.14;
+    pointer-events:none;
+  }
+
+  .hero-copy{
+    grid-area: 1 / 1;
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+    padding:56px 64px;
+  }
+  .hero-copy-inner{ max-width:520px; }
+
+  .hero-name{
+    font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:clamp(28px, 7.2vw, 58px); line-height:1.04; letter-spacing:-0.015em;
+    color:var(--navy-950); white-space:nowrap;
+    opacity:0; animation:riseIn 0.7s ease-out 0.1s forwards;
+  }
+  .hero-credentials{
+    margin-top:18px; font-size:clamp(13.5px, 1.5vw, 16px); font-weight:500;
+    letter-spacing:0.01em; color:var(--navy-800);
+    opacity:0; animation:riseIn 0.7s ease-out 0.22s forwards;
+  }
+  .hero-designation{
+    margin-top:10px; font-family:'Inter Tight', sans-serif;
+    font-size:clamp(16px, 2vw, 20px); font-weight:600; color:var(--navy-950);
+    opacity:0; animation:riseIn 0.7s ease-out 0.32s forwards;
+  }
+  .hero-tagline{
+    margin-top:22px; font-size:clamp(15px, 1.7vw, 18.5px); font-weight:500;
+    color:var(--brass-600); letter-spacing:0.005em;
+    opacity:0; animation:riseIn 0.7s ease-out 0.42s forwards;
+  }
+  .hero-avail{
+    margin-top:16px; font-size:clamp(13.5px, 1.5vw, 15.5px); font-weight:400;
+    color:var(--navy-800); line-height:1.5; max-width:420px;
+    opacity:0; animation:riseIn 0.7s ease-out 0.52s forwards;
+  }
+  .hero-ctas{
+    margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;
+    opacity:0; animation:riseIn 0.7s ease-out 0.62s forwards;
+  }
+  .btn-primary, .btn-secondary{
+    display:inline-flex; align-items:center; padding:13px 26px; font-size:14.5px;
+    font-weight:600; text-decoration:none; border-radius:3px; letter-spacing:0.01em;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{ background:var(--navy-950); color:var(--ivory-text); }
+  .btn-primary:hover{ background:var(--navy-800); transform:translateY(-1px); }
+  .btn-secondary{ background:transparent; color:var(--navy-950); border:1.5px solid var(--navy-950); }
+  .btn-secondary:hover{ background:var(--navy-950); color:var(--ivory-text); }
+
+  @keyframes riseIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+  .stats-bar{
+    position:relative; z-index:2;
+    max-width:1400px; margin:0 auto; padding:14px 64px 46px;
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+  }
+  .stat{ text-align:left; }
+  .stat-num{
+    font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:clamp(22px, 2.6vw, 32px); color:var(--navy-950); letter-spacing:-0.01em;
+  }
+  .stat-label{ margin-top:4px; font-size:12.5px; font-weight:500; color:var(--navy-800); opacity:0.75; }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-name, .hero-credentials, .hero-designation, .hero-tagline, .hero-avail, .hero-ctas{ animation:none; opacity:1; }
+    .hero-media img{ animation:none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    nav.nav-desktop-only{display:none;}
+    .hero{ min-height:auto; max-height:none; display:block; }
+    .hero-media{ height:56vh; min-height:380px; max-height:600px; }
+    .hero-media img{
+      object-position:50% 0%;
+      -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+      -webkit-mask-composite: source-in; mask-composite: intersect;
+    }
+    .hero-media::after{ background:linear-gradient(to bottom, transparent 55%, var(--navy-950) 100%); opacity:0.10; }
+    .hero-copy{ position:static; padding:0 24px 40px; margin-top:-56px; }
+    .hero-copy-inner{ max-width:none; }
+    .stats-bar{ grid-template-columns:repeat(2, 1fr); padding:6px 24px 40px; row-gap:24px; }
+    .header-inner{ padding:0 20px; }
+    .header-cta{ padding:9px 16px; font-size:12.5px; }
+  }
+  @media (max-width: 420px){
+    .hero-name{ font-size:clamp(26px, 8vw, 34px); }
+    .brand-tag{ display:none; }
+  }
+
+
+  :root{
+    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
+    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
+    --brass-500:#A9822E; --brass-600:#8E6D26;
+    --ink-text:#14211F; --ivory-text:#F3F3EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
+  section{padding:88px 0;}
+
+  h2{
+    font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:clamp(26px, 3.4vw, 40px); letter-spacing:-0.01em; line-height:1.15;
+    color:var(--navy-950);
+  }
+
+  /* ---------------- shared immersive media treatment ---------------- */
+  .media-frame{ position:relative; overflow:visible; }
+  .media-frame{ --face-y: 0%; }
+  .media-frame img{
+    width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y);
+    transition:transform 0.2s ease;
+  }
+  .media-frame::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    mix-blend-mode:multiply; opacity:0.13;
+  }
+  /* feather facing left (image sits on the right, text on the left) */
+  .feather-left img{
+    -webkit-mask-image: linear-gradient(96deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image: linear-gradient(96deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .feather-left::after{ background:linear-gradient(96deg, var(--navy-950) 0%, transparent 26%); }
+  /* feather facing right (image sits on the left, text on the right) */
+  .feather-right img{
+    -webkit-mask-image: linear-gradient(264deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image: linear-gradient(264deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .feather-right::after{ background:linear-gradient(264deg, var(--navy-950) 0%, transparent 26%); }
+
+  /* scroll reveal: one settle-in per element, not per scroll tick */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal.in-view img{ animation:slowZoom 16s ease-out forwards; }
+  @keyframes slowZoom{ from{transform:scale(1.0);} to{transform:scale(1.05);} }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .reveal.in-view img{ animation:none; }
+  }
+
+  /* ---------------- CONSULTATION ---------------- */
+  #consultation{ background:var(--ivory-100); }
+  .consult-grid{
+    margin-top:44px; display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:start;
+  }
+  .clinic-list{ display:flex; flex-direction:column; }
+  .clinic-row{
+    display:flex; align-items:center; gap:20px; padding:22px 0;
+    border-bottom:1px solid rgba(20,33,31,0.1);
+  }
+  .clinic-row:first-child{padding-top:0;}
+  .clinic-mark{
+    flex-shrink:0; width:52px; height:52px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--navy-950); font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:15px; color:var(--ivory-text); letter-spacing:0.01em;
+  }
+  .clinic-info{flex:1; min-width:0;}
+  .clinic-name{ font-family:'Inter Tight', sans-serif; font-weight:600; font-size:17px; color:var(--navy-950); }
+  .clinic-meta{
+    margin-top:4px; font-size:13.5px; color:var(--navy-800); opacity:0.8;
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .clinic-directions{ flex-shrink:0; font-size:13px; font-weight:600; color:var(--brass-600); text-decoration:none; white-space:nowrap; }
+  .clinic-directions:hover{ text-decoration:underline; }
+
+  .consult-media{ position:sticky; top:60px; aspect-ratio: 4/5; }
+
+  /* ---------------- TREATMENTS ---------------- */
+  #treatment{ background:var(--ivory-50); }
+  .tx-groups{ margin-top:52px; display:flex; flex-direction:column; gap:80px; }
+  .tx-group{ display:grid; grid-template-columns: 0.95fr 1.05fr; gap:56px; align-items:center; }
+  .tx-group:nth-child(even){ grid-template-columns: 1.05fr 0.95fr; }
+  .tx-group:nth-child(even) .tx-media{ order:2; }
+  .tx-media{ aspect-ratio: 5/4; }
+  .tx-copy h3{
+    font-family:'Inter Tight', sans-serif; font-weight:650; font-size:clamp(19px, 2vw, 24px);
+    color:var(--navy-950); letter-spacing:-0.005em;
+  }
+  .tx-list{ margin-top:22px; display:flex; flex-direction:column; }
+  .tx-item{ border-bottom:1px solid rgba(20,33,31,0.1); }
+  .tx-item:first-child{ border-top:1px solid rgba(20,33,31,0.1); }
+  .tx-item-head{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:16px 0; cursor:pointer; user-select:none;
+  }
+  .tx-item-name{ font-size:16px; font-weight:500; color:var(--ink-text); }
+  .tx-readmore{ font-size:12.5px; font-weight:600; color:var(--brass-600); white-space:nowrap; display:flex; align-items:center; gap:5px; }
+  .tx-readmore svg{ width:9px; height:9px; transition:transform 0.2s ease; }
+  .tx-item.open .tx-readmore svg{ transform:rotate(180deg); }
+  .tx-item-body{ max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+  .tx-item.open .tx-item-body{ max-height:200px; }
+  .tx-item-body p{ padding:0 0 20px; font-size:14.5px; line-height:1.6; color:var(--navy-800); max-width:520px; }
+
+  @media (max-width: 900px){
+    .consult-grid{ grid-template-columns:1fr; }
+    .consult-media{ position:static; order:-1; aspect-ratio:4/5; }
+    .tx-group, .tx-group:nth-child(even){ grid-template-columns:1fr; }
+    .tx-group .tx-media, .tx-group:nth-child(even) .tx-media{ order:-1; aspect-ratio:16/10; }
+    .media-frame.feather-left img, .media-frame.feather-right img{
+      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      -webkit-mask-composite: source-in; mask-composite: intersect;
+    }
+    .wrap{ padding:0 24px; }
+  }
+
+
+  :root{
+    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
+    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
+    --brass-500:#A9822E; --brass-600:#8E6D26;
+    --ink-text:#14211F; --ivory-text:#F3F3EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
+  section{padding:88px 0;}
+  h2{
+    font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:clamp(26px, 3.4vw, 40px); letter-spacing:-0.01em; line-height:1.15;
+    color:var(--navy-950);
+  }
+  p{ line-height:1.65; }
+
+  .media-frame{ position:relative; overflow:visible; --face-y:0%; }
+  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y); transition:transform 0.2s ease; }
+  .media-frame::after{ content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:0.13; }
+  .feather-left img{
+    -webkit-mask-image: linear-gradient(96deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image: linear-gradient(96deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .feather-left::after{ background:linear-gradient(96deg, var(--navy-950) 0%, transparent 26%); }
+  .feather-right img{
+    -webkit-mask-image: linear-gradient(264deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image: linear-gradient(264deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .feather-right::after{ background:linear-gradient(264deg, var(--navy-950) 0%, transparent 26%); }
+  .feather-bottom img{
+    -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+  }
+  .feather-bottom::after{ background:linear-gradient(to bottom, transparent 60%, var(--navy-950) 100%); opacity:0.10; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal.in-view img{ animation:slowZoom 16s ease-out forwards; }
+  @keyframes slowZoom{ from{transform:scale(1.0);} to{transform:scale(1.05);} }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .reveal.in-view img{ animation:none; }
+  }
+
+  /* ---------------- ABOUT ---------------- */
+  #about{ background:var(--ivory-50); }
+  .about-grid{ margin-top:44px; display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start; }
+  .about-media{ aspect-ratio:3/4; position:sticky; top:60px; }
+  .about-body p{ font-size:16px; color:var(--navy-900); margin-bottom:18px; max-width:620px; }
+  .about-toggle{
+    margin-top:6px; background:none; border:none; padding:0;
+    font-size:14px; font-weight:600; color:var(--brass-600); cursor:pointer;
+  }
+  .about-full{ max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+  .about-full.open{ max-height:2600px; }
+  .about-full-inner{ padding-top:8px; }
+  .profile-block{ margin-top:28px; }
+  .profile-block h4{
+    font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15px;
+    color:var(--navy-950); letter-spacing:0.01em; margin-bottom:10px;
+  }
+  .profile-block ul{ list-style:none; }
+  .profile-block li{
+    font-size:14.5px; color:var(--navy-800); line-height:1.6; padding:7px 0 7px 16px;
+    position:relative; border-bottom:1px solid rgba(20,33,31,0.07);
+  }
+  .profile-block li::before{
+    content:""; position:absolute; left:0; top:15px; width:5px; height:5px;
+    border-radius:50%; background:var(--brass-500);
+  }
+
+  /* ---------------- WHY CHOOSE ---------------- */
+  #why-choose{ background:var(--ivory-100); }
+  .wc-lead{ max-width:640px; margin-top:18px; font-size:16px; color:var(--navy-900); }
+  .wc-points{ margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .wc-point h4{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:17px; color:var(--navy-950); }
+  .wc-point p{ margin-top:8px; font-size:14.5px; color:var(--navy-800); }
+
+  /* ---------------- BEYOND SURGERY ---------------- */
+  #beyond{ background:var(--navy-950); color:var(--ivory-text); }
+  #beyond h2{ color:var(--ivory-text); }
+  .beyond-media{ aspect-ratio:16/9; margin-top:44px; }
+  .beyond-body{ margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .beyond-text p{ font-size:15.5px; line-height:1.7; color:rgba(243,243,236,0.85); max-width:560px; }
+  .wa-lockup{ display:flex; align-items:center; gap:16px; margin-top:22px; }
+  .wa-lockup img{ width:56px; height:56px; border-radius:50%; }
+  .wa-lockup-text{ font-family:'Inter Tight', sans-serif; font-weight:600; font-size:14.5px; color:var(--ivory-text); }
+  .wa-lockup-sub{ font-size:12.5px; color:rgba(243,243,236,0.6); margin-top:2px; }
+  .beyond-highlights{ display:flex; flex-direction:column; gap:22px; }
+  .bh-item{ border-top:1px solid rgba(243,243,236,0.15); padding-top:16px; }
+  .bh-num{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:24px; color:var(--brass-500); }
+  .bh-label{ font-size:13.5px; color:rgba(243,243,236,0.75); margin-top:2px; }
+
+  /* ---------------- TESTIMONIALS ---------------- */
+  #testimonials{ background:var(--ivory-50); }
+  .review-grid{ margin-top:44px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:rgba(20,33,31,0.1); }
+  .review-card{ background:var(--ivory-50); padding:32px; }
+  .review-quote{
+    font-size:15px; line-height:1.65; color:var(--navy-900);
+    display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .review-card.open .review-quote{ -webkit-line-clamp:unset; }
+  .review-name{ margin-top:16px; font-family:'Inter Tight', sans-serif; font-weight:650; font-size:14.5px; color:var(--navy-950); }
+  .review-source{ font-size:12px; color:var(--brass-600); margin-top:2px; }
+
+  /* ---------------- BOOKS ---------------- */
+  #books{ background:var(--ivory-100); }
+  .book-list{ margin-top:44px; display:flex; flex-direction:column; }
+  .book-row{
+    display:flex; align-items:center; gap:32px; padding:28px 0;
+    border-bottom:1px solid rgba(20,33,31,0.1);
+  }
+  .book-row:first-child{ padding-top:0; }
+  .book-cover{ flex-shrink:0; width:88px; aspect-ratio:3/4; overflow:hidden; box-shadow:0 8px 24px rgba(10,23,28,0.14); }
+  .book-cover img{ width:100%; height:100%; object-fit:cover; }
+  .book-info{ flex:1; }
+  .book-title{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:18px; color:var(--navy-950); }
+  .book-note{ margin-top:4px; font-size:13.5px; color:var(--brass-600); font-weight:600; }
+  .book-action{
+    flex-shrink:0; font-size:13.5px; font-weight:600; color:var(--navy-950);
+    text-decoration:none; border-bottom:1.5px solid var(--navy-950); padding-bottom:2px; white-space:nowrap;
+  }
+
+  @media (max-width: 900px){
+    .wrap{ padding:0 24px; }
+    .about-grid{ grid-template-columns:1fr; }
+    .about-media{ position:static; aspect-ratio:4/5; order:-1; }
+    .wc-points{ grid-template-columns:1fr; gap:24px; }
+    .beyond-body{ grid-template-columns:1fr; gap:32px; }
+    .review-grid{ grid-template-columns:1fr; }
+    .book-row{ gap:20px; }
+    .book-cover{ width:64px; }
+    .media-frame.feather-left img, .media-frame.feather-right img{
+      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      -webkit-mask-composite: source-in; mask-composite: intersect;
+    }
+  }
+
+
+  :root{
+    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
+    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
+    --brass-500:#A9822E; --brass-600:#8E6D26;
+    --ink-text:#14211F; --ivory-text:#F3F3EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
+  img{display:block; max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
+  section{padding:88px 0;}
+  h2{
+    font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:clamp(26px, 3.4vw, 40px); letter-spacing:-0.01em; line-height:1.15;
+    color:var(--navy-950);
+  }
+
+  .media-frame{ position:relative; overflow:hidden; --face-y:0%; }
+  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y); transition:transform 0.5s ease; }
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal.in-view img{ animation:slowZoom 16s ease-out forwards; }
+  @keyframes slowZoom{ from{transform:scale(1.0);} to{transform:scale(1.06);} }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .reveal.in-view img{ animation:none; }
+  }
+
+  /* ---------------- GALLERY ---------------- */
+  #gallery{ background:var(--ivory-100); }
+  .g-grid{
+    margin-top:44px; display:grid; grid-template-columns:repeat(4, 1fr);
+    gap:4px;
+  }
+  .g-tile{ aspect-ratio:4/5; }
+  .g-tile:nth-child(3n+1){ aspect-ratio:4/5.6; }
+
+  /* ---------------- BLOGS ---------------- */
+  #blogs{ background:var(--ivory-50); }
+  .blog-grid{ margin-top:44px; display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:rgba(20,33,31,0.1); }
+  .blog-card{
+    background:var(--ivory-50); padding:30px; text-decoration:none; display:block;
+    transition:background 0.15s ease;
+  }
+  .blog-card:hover{ background:var(--ivory-100); }
+  .blog-meta{ font-size:12px; font-weight:600; color:var(--brass-600); display:flex; gap:7px; }
+  .blog-title{
+    margin-top:12px; font-family:'Inter Tight', sans-serif; font-weight:650;
+    font-size:17px; line-height:1.3; color:var(--navy-950);
+  }
+  .blog-excerpt{ margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--navy-800); }
+  .blog-link{ margin-top:16px; display:inline-block; font-size:13px; font-weight:600; color:var(--navy-950); }
+
+  /* ---------------- CLOSING CTA ---------------- */
+  #closing-cta{ background:var(--navy-950); color:var(--ivory-text); text-align:left; }
+  #closing-cta h2{ color:var(--ivory-text); max-width:560px; }
+  #closing-cta p{ margin-top:14px; color:rgba(243,243,236,0.75); font-size:15.5px; }
+  .cta-row{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary, .btn-secondary{
+    display:inline-flex; align-items:center; padding:13px 26px; font-size:14.5px;
+    font-weight:600; text-decoration:none; border-radius:3px; letter-spacing:0.01em;
+  }
+  .btn-primary{ background:var(--brass-500); color:var(--navy-950); }
+  .btn-secondary{ background:transparent; color:var(--ivory-text); border:1.5px solid rgba(243,243,236,0.4); }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{ background:var(--navy-900); color:rgba(243,243,236,0.85); padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; }
+  .footer-brand{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:18px; color:var(--ivory-text); }
+  .footer-sub{ margin-top:6px; font-size:13px; color:rgba(243,243,236,0.6); }
+  .footer-col h5{ font-size:12.5px; font-weight:650; letter-spacing:0.04em; color:rgba(243,243,236,0.5); margin-bottom:14px; }
+  .footer-col a, .footer-col p{ display:block; font-size:14px; color:rgba(243,243,236,0.85); text-decoration:none; margin-bottom:10px; }
+  .footer-disclaimer{
+    margin-top:44px; padding-top:24px; border-top:1px solid rgba(243,243,236,0.12);
+    font-size:12px; line-height:1.6; color:rgba(243,243,236,0.45); max-width:760px;
+  }
+  .footer-bottom{
+    margin-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12px; color:rgba(243,243,236,0.4);
+  }
+
+  @media (max-width: 900px){
+    .wrap{ padding:0 24px; }
+    .g-grid{ grid-template-columns:repeat(2, 1fr); }
+    .blog-grid{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:28px; }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L12 22" stroke="#F1F1EA" stroke-width="1.3"/>
+          <path d="M7 6C7 6 8.5 8 12 8C15.5 8 17 6 17 6" stroke="#A9822E" stroke-width="1.3"/>
+          <path d="M6 11C6 14.5 8.5 17 12 17C15.5 17 18 14.5 18 11" stroke="#F1F1EA" stroke-width="1.3"/>
+          <circle cx="12" cy="4" r="1.6" fill="#A9822E"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Dr. Kishan Rao</span>
+        <span class="brand-tag">Laparoscopic Surgeon</span>
+      </span>
+    </a>
+    <nav class="nav-desktop-only">
+      <a href="#home">Home</a>
+      <a href="#consultation">Consultation</a>
+      <a href="#treatment">Treatment</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#blogs">Blogs</a>
+    </nav>
+    <a href="#book" class="header-cta">Book Consultation</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-media">
+    <img src="images/hero/portrait.jpg" alt="Dr. Kishan Rao, General, Laparoscopic and LASER Surgeon">
+  </div>
+  <div class="hero-copy">
+    <div class="hero-copy-inner">
+      <h1 class="hero-name">Dr. Kishan Rao</h1>
+      <p class="hero-credentials">MBBS (BMC) &middot; MS (Gold Medalist) &middot; FMAS &middot; DMAS</p>
+      <p class="hero-designation">General, Laparoscopic and LASER Surgeon</p>
+      <p class="hero-tagline">Precise practice. Compassionate care.</p>
+      <p class="hero-avail">Consultations available by prior appointment across Mangalore, Puttur and Sullia.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn-primary">Book Consultation</a>
+        <a href="#whatsapp" class="btn-secondary">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years of Surgical Experience</div></div>
+  <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Surgeries</div></div>
+  <div class="stat"><div class="stat-num">5000+</div><div class="stat-label">Happy Patients</div></div>
+  <div class="stat"><div class="stat-num">3000+</div><div class="stat-label">Hours of Surgery</div></div>
+</div>
+
+<section id="consultation">
+  <div class="wrap">
+    <h2>Where patients can consult Dr. Kishan Rao</h2>
+    <div class="consult-grid">
+      <div class="clinic-list">
+        <div class="clinic-row"><div class="clinic-mark">AJ</div><div class="clinic-info"><div class="clinic-name">AJ Hospital, Mangaluru</div><div class="clinic-meta"><span>Monday to Friday</span><span>&middot;</span><span>9:00 AM&ndash;10:00 AM</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">BN</div><div class="clinic-info"><div class="clinic-name">Bhat's Nursing Home, Mangaluru</div><div class="clinic-meta"><span>Monday to Friday</span><span>&middot;</span><span>10:00 AM&ndash;1:00 PM</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">AH</div><div class="clinic-info"><div class="clinic-name">Adarsha Hospital, Puttur</div><div class="clinic-meta"><span>Saturday</span><span>&middot;</span><span>9:00 AM&ndash;11:00 AM</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">NA</div><div class="clinic-info"><div class="clinic-name">Namma Arogyadhama, Ayyanakatte</div><div class="clinic-meta"><span>Sunday</span><span>&middot;</span><span>9:00 AM&ndash;5:00 PM</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">SCS</div><div class="clinic-info"><div class="clinic-name">SCS Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">CH</div><div class="clinic-info"><div class="clinic-name">Colaco Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">YS</div><div class="clinic-info"><div class="clinic-name">Yenepoya Specialty Hospital</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="#">Directions</a></div>
+      </div>
+      <div class="consult-media media-frame feather-left reveal" style="--face-y:38%">
+        <img src="images/consultation/consultation.jpg" alt="Dr. Kishan Rao consulting with a patient">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="treatment">
+  <div class="wrap">
+    <h2>Treatments</h2>
+    <div class="tx-groups">
+
+      <div class="tx-group">
+        <div class="tx-media media-frame feather-right reveal">
+          <img src="images/treatments/laser.jpg" alt="LASER surgical consultation">
+        </div>
+        <div class="tx-copy">
+          <h3>LASER</h3>
+          <div class="tx-list">
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Varicose Veins</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Varicose veins are enlarged, twisted veins that commonly appear in the legs. They develop when valves inside the veins do not allow blood to flow efficiently back toward the heart.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Fistula</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>An anal fistula is an abnormal tunnel that can form between the anal canal and the skin near the anus. It often develops after infection in a nearby anal gland.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Fissure</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>An anal fissure is a small tear in the skin lining the anal opening. It is commonly associated with pain during bowel movements and sometimes bleeding.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Piles</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Piles, also called hemorrhoids, are swollen blood vessels in or around the anus and lower rectum. They may be internal or external depending on where they form.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Pilonidal Sinus</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>A pilonidal sinus is a small tunnel or cavity in the skin, usually near the cleft between the buttocks. It may contain hair and skin debris.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-group">
+        <div class="tx-media media-frame feather-left reveal">
+          <img src="images/treatments/laparoscopic.jpg" alt="Laparoscopic surgical procedure">
+        </div>
+        <div class="tx-copy">
+          <h3>Laparoscopic (Key Hole)</h3>
+          <div class="tx-list">
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Gallbladder Stones</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Gallbladder stones, also called gallstones, are hardened deposits that form inside the gallbladder, the small organ that stores bile, a fluid used in digestion.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Appendix Infection</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>The appendix is a small pouch attached to the first part of the large intestine. Appendix-related problems commonly refer to inflammation of this organ, known as appendicitis.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Hernia</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>A hernia is a bulge that forms when tissue or an organ pushes through a weak area in the surrounding muscle or wall. Hernias commonly occur in the abdomen or groin.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">GERD</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>GERD occurs when stomach acid regularly flows back into the tube connecting the mouth and stomach, irritating its lining.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Uterus &ndash; Ovary Tumors</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Growths that develop in or on the uterus or ovaries, ranging from benign cysts and fibroids to conditions that require surgical evaluation and management.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-group">
+        <div class="tx-media media-frame feather-right reveal">
+          <img src="images/treatments/general.jpg" alt="General surgical consultation">
+        </div>
+        <div class="tx-copy">
+          <h3>General</h3>
+          <div class="tx-list">
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Breast Lump</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>A breast lump is a mass or swelling in breast tissue that may be benign or require further evaluation, commonly assessed through clinical examination and imaging.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Thyroid, Parotid Tumor</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Growths affecting the thyroid gland in the neck or the parotid salivary gland near the ear, evaluated for size, growth pattern and suitability for surgical care.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Hydrocele, Varicocele, Phimosis</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>A group of common urological conditions &mdash; fluid collection, vein enlargement, or foreskin tightness &mdash; assessed individually to determine the appropriate care.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Diabetic Foot</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>A diabetic foot ulcer is an open sore or wound that can occur in people with diabetes, linked to changes in sensation, circulation and skin healing.</p></div></div>
+            <div class="tx-item"><div class="tx-item-head" onclick="this.parentElement.classList.toggle('open')"><span class="tx-item-name">Ulcer / Gangrene</span><span class="tx-readmore">Read more <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span></div><div class="tx-item-body"><p>Non-healing wounds or tissue loss requiring assessment of circulation and infection, with timely surgical care to prevent further complications.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About Dr. Kishan Rao</h2>
+    <div class="about-grid">
+      <div class="about-media media-frame feather-right reveal" style="--face-y:4%">
+        <img src="images/about/portrait.jpg" alt="Dr. Kishan Rao">
+      </div>
+      <div class="about-body">
+        <p>Dr. Kishan Rao is a highly experienced and respected surgeon with more than 10 years of experience in the surgical field.</p>
+        <p>He is extremely empathetic to his patients, treating them like family, and always maintains high professional integrity and ethical standards.</p>
+        <p>He specializes in General Surgery, Laparoscopic Surgery and Advanced LASER Surgery, and performs a wide range of basic and advanced surgical procedures. He has a strong interest in using newer technology and advances in surgical care to support safe, appropriate treatment for his patients.</p>
+        <p>He is passionate about teaching and is a faculty member at the medical college.</p>
+        <p>Dr. Kishan Rao is a dedicated surgeon committed to providing high-quality care with clarity, compassion and responsible clinical decision-making.</p>
+
+        <button class="about-toggle" onclick="document.getElementById('fullProfile').classList.toggle('open'); this.textContent = this.textContent.startsWith('Read') ? 'Show less' : 'Read full profile'">Read full profile</button>
+
+        <div class="about-full" id="fullProfile">
+          <div class="about-full-inner">
+
+            <div class="profile-block">
+              <h4>Education</h4>
+              <ul>
+                <li>MBBS &ndash; Bangalore Medical College and Research Institute, Bengaluru.</li>
+                <li>MS General Surgery &ndash; Agartala Government Medical College, Agartala.</li>
+                <li>Senior Residency in Cardiovascular and Thoracic Surgery &ndash; AIIMS New Delhi.</li>
+                <li>Senior Residency in Pediatric Cardiac Surgery &ndash; Sri Chitra Tirunal Institute for Medical Sciences and Technology, Thiruvananthapuram.</li>
+                <li>Fellowship in Minimal Access Surgery &amp; Diploma in Minimal Access Surgery &ndash; World Laparoscopy Hospital, Gurugram.</li>
+                <li>Trained in Laparoscopy, Robotic surgery and Endoscopy.</li>
+              </ul>
+            </div>
+
+            <div class="profile-block">
+              <h4>Academic Achievements</h4>
+              <ul>
+                <li>Best Outgoing student of Jnana Ganga Public School, Bellare.</li>
+                <li>Best Outgoing Student of Bangalore Medical College and Research Institute, Bengaluru.</li>
+                <li>Overall University Topper among all the branches of MD/MS examination and a Gold Medalist.</li>
+                <li>MCh Entrance Exam: 1st Rank in Sri Chitra Tirunal Institute for Medical Sciences and Technology, Thiruvananthapuram.</li>
+                <li>MCh Entrance Exam: 2nd Rank in AIIMS, New Delhi.</li>
+                <li>World Association of Laparoscopic Surgeons Scholarship.</li>
+                <li>Basic Life Support and Advanced Cardiac Life Support Provider Certification by NHCPS, USA.</li>
+                <li>Torrent Young Scholar Award in Surgery &ndash; Zonal winner.</li>
+                <li>More than 10 Research paper publications in reputed International and national journals.</li>
+                <li>Winner of several research paper and poster presentation competitions in various state and national conferences.</li>
+                <li>Honorary B C Roy Award for the service in Medical and Social field.</li>
+              </ul>
+            </div>
+
+            <div class="profile-block">
+              <h4>Work Experience</h4>
+              <ul>
+                <li>ICU duty doctor in Shankara Cancer Hospital, Bangalore.</li>
+                <li>Senior Resident at Sri Sathya Sai Sanjeevani International centre for Pediatric Heart Care, Palwal, Haryana.</li>
+                <li>Senior Resident at AIIMS, New Delhi, in the department of CTVS.</li>
+                <li>Senior Resident at KVGMC Hospital, Sullia in the department of General Surgery.</li>
+                <li>Senior Resident at SCTIMST, Thiruvananthapuram in the department of CTVS.</li>
+                <li>Fellow in Minimal Access Surgery at World Laparoscopy Hospital, Gurugram.</li>
+                <li>Assistant Professor at AJIMS, Mangalore in the department of Surgery.</li>
+              </ul>
+            </div>
+
+            <div class="profile-block">
+              <h4>Beyond Surgery</h4>
+              <ul>
+                <li>Founder and Chief of The White Army &ndash; Free Online Medical Education platform for more than 3 Lakh members all over the country and abroad.</li>
+                <li>Author of Surgery Simplified for Students book.</li>
+                <li>Chief Editor and Publisher of Language of Healthcare books in Kannada, Tulu, Bengali, Kokborok, Malayalam, Tamil, Telugu, Hindi, Marathi, Gujarathi, Assamese, Odiya languages; Publisher of Exam Oriented Clinical Neurology book.</li>
+                <li>Founder of The Empath Society &ndash; to Empower Humanity, an initiative for social service.</li>
+                <li>Musician &ndash; Carnatic classical vocalist and can play 8 musical instruments proficiently.</li>
+                <li>Bangalore Medical College Badminton team Captain and has won more than 30 Inter-college tournaments all over the country. 3 time RGUHS Champions.</li>
+                <li>Voluntary blood donation for more than 40 times in last 15 years.</li>
+                <li>Public speaker and writer.</li>
+                <li>Resource person, mentor and judge for numerous national and international conferences, competitions and events.</li>
+                <li>Master of Ceremony for several high profile functions.</li>
+                <li>Organizer of multiple National Level Quizzes and competitions, including all time first completely online Medical Quiz.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-choose">
+  <div class="wrap">
+    <h2>Precision in surgical practice. Compassion in every conversation.</h2>
+    <p class="wc-lead">Surgical decisions begin with careful assessment, clear explanation and an honest discussion of the options available. When surgery is appropriate, patients are guided through the procedure, recovery and follow-up with clarity and care.</p>
+    <div class="wc-points">
+      <div class="wc-point"><h4>Clear diagnosis</h4><p>Careful assessment before deciding the next step.</p></div>
+      <div class="wc-point"><h4>Clear communication</h4><p>Treatment options explained in language patients and families can understand.</p></div>
+      <div class="wc-point"><h4>Responsible care</h4><p>Guidance that continues through surgery, recovery and follow-up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <h2>Surgeon. Educator. Author. Mentor.</h2>
+    <div class="beyond-media media-frame feather-bottom reveal">
+      <img src="images/beyond/audience.jpg" alt="Dr. Kishan Rao addressing a large audience">
+    </div>
+    <div class="beyond-body">
+      <div class="beyond-text">
+        <p>Dr. Kishan Rao is the Founder and Chief of The White Army, a free online medical education initiative with more than 3 lakh members across India and abroad. His work beyond clinical practice includes medical education, publications, student mentorship and public initiatives.</p>
+        <div class="wa-lockup">
+          <img src="images/brand/white-army-logo.png" alt="The White Army logo">
+          <div>
+            <div class="wa-lockup-text">The White Army</div>
+            <div class="wa-lockup-sub">Free medical education &middot; 3 Lakh+ members</div>
+          </div>
+        </div>
+      </div>
+      <div class="beyond-highlights">
+        <div class="bh-item"><div class="bh-num">3 Lakh+</div><div class="bh-label">The White Army members</div></div>
+        <div class="bh-item"><div class="bh-num">Author &amp; Publisher</div><div class="bh-label">Medical education and healthcare communication</div></div>
+        <div class="bh-item"><div class="bh-num">MS Gold Medalist</div><div class="bh-label">Academic distinction</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="wrap">
+    <h2>What patients say</h2>
+    <div class="review-grid">
+        <div class="review-card">
+          <p class="review-quote">&ldquo;Dear Doctor....., I am writing to express my sincere gratitude for the care you provided to my child during his surgery. You explain everything in calm way. Your skill, patience and kindness created fearless environment. Because of your expertise and compassion, my child is recovering well and we are so relieved.&rdquo;</p>
+          <div class="review-name">Shruthi gs</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;Incredibly grateful to Dr. Kishan Rao! He patiently waited 30 minutes when I was running late, gave me a very thorough diagnosis, and clearly explained my reports. His down-to-earth nature and willingness to be accessible over WhatsApp for any follow-ups make him stand out. Truly exceptional care!&rdquo;</p>
+          <div class="review-name">Deepak Anchan</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;Dr. Kishan Rao is one of the best and most approachable doctor. I underwent fistula treatment under his care and he explained each aspect of the condition and treatment clearly. He was always available to address my doubts, especially after surgery and provided excellent support throughout my recovery.&rdquo;</p>
+          <div class="review-name">Pratham</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;Dr. Kishan Bai is an exceptional General and Laparoscopic Surgeon whose surgical expertise, calm approach, and dedication to patient well-being inspire great confidence. He takes the time to listen carefully, explains the diagnosis and treatment plan in a clear and thorough manner, and patiently answers every question.&rdquo;</p>
+          <div class="review-name">Sadik Bareppadi</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;I had undergone a surgery for Abscesses in the posterior perianal region, done by Dr. Kishan Rao Sir, at Bhat's Nursing Home, Mangaluru. It was excellent experience, he is very compassionate and took time to explain the diagnosis, why the procedure was needed and what to expect. Healing was faster than I expected.&rdquo;</p>
+          <div class="review-name">Narayan Putran</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;I recently got successful hemorrhoids (piles) surgery. Dr Kishan Rao is best and experienced surgeon, he is kind and explained clearly about surgery. Thank you Dr. Nurse and staff's also good caring their patient.&rdquo;</p>
+          <div class="review-name">Shivu Pal</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <p class="review-quote">&ldquo;My friend Mr. Gopinath, 73 years old, was suffering from severe varicose veins with deep vein thrombosis and a venous ulcer. Instead of unnecessary procedures, Dr. Kishan Rao treated him with simple medicines, proper dressings, and very effective lifestyle changes. His swelling reduced significantly and he is now able to walk comfortably.&rdquo;</p>
+          <div class="review-name">PP Venu</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="books">
+  <div class="wrap">
+    <h2>Books &amp; publications</h2>
+    <div class="book-list">
+      <div class="book-row">
+        <div class="book-cover"><img src="images/books/language-of-healthcare.jpg" alt="Language of Healthcare book cover"></div>
+        <div class="book-info">
+          <div class="book-title">Language of Healthcare</div>
+          <div class="book-note">Chief Editor and Publisher</div>
+        </div>
+        <a class="book-action" href="#">View book</a>
+      </div>
+      <div class="book-row">
+        <div class="book-cover"><img src="images/books/surgery-simplified.jpg" alt="Surgery Simplified for Students book cover"></div>
+        <div class="book-info">
+          <div class="book-title">Surgery Simplified for Students</div>
+          <div class="book-note">Author</div>
+        </div>
+        <a class="book-action" href="#">Know more</a>
+      </div>
+      <div class="book-row">
+        <div class="book-cover"><img src="images/books/case-proformas.jpg" alt="All in 1 Clinical Case Proformas book cover"></div>
+        <div class="book-info">
+          <div class="book-title">All in 1 Case Proformas</div>
+          <div class="book-note">Author</div>
+        </div>
+        <a class="book-action" href="#">View book</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2>A surgeon's journey</h2>
+    <div class="g-grid">
+        <div class="g-tile media-frame reveal" style="--face-y:12%">
+          <img src="images/gallery/felicitation-1.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:8%">
+          <img src="images/gallery/award-speech.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:50%">
+          <img src="images/gallery/or-team.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:15%">
+          <img src="images/gallery/felicitation-2.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:15%">
+          <img src="images/gallery/group-award.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:8%">
+          <img src="images/gallery/with-teacher.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:10%">
+          <img src="images/gallery/podium-address.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:30%">
+          <img src="images/gallery/crowd-address.jpg" alt="Dr. Kishan Rao">
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="blogs">
+  <div class="wrap">
+    <h2>Patient education in simple language</h2>
+    <div class="blog-grid">
+        <a class="blog-card" href="#">
+          <div class="blog-meta"><span>Vein Care</span><span>&middot;</span><span>9 Aug 2026</span></div>
+          <h3 class="blog-title">Laser Treatment for Varicose Veins: A Modern Solution for Pain-Free Legs</h3>
+          <p class="blog-excerpt">A responsible explanation of EVLA for varicose veins, including symptoms, suitability, benefits, recovery and when to seek evaluation.</p>
+          <span class="blog-link">Read article &rarr;</span>
+        </a>
+        <a class="blog-card" href="#">
+          <div class="blog-meta"><span>Proctology</span><span>&middot;</span><span>9 Aug 2026</span></div>
+          <h3 class="blog-title">How to Prevent Hemorrhoids: Healthy Habits That Make a Difference</h3>
+          <p class="blog-excerpt">Simple bowel, diet, hydration and activity habits that may reduce the risk of hemorrhoids, with guidance on when symptoms need evaluation.</p>
+          <span class="blog-link">Read article &rarr;</span>
+        </a>
+        <a class="blog-card" href="#">
+          <div class="blog-meta"><span>Hernia Surgery</span><span>&middot;</span><span>9 Aug 2026</span></div>
+          <h3 class="blog-title">How to Manage a Hernia: What Every Patient Should Know</h3>
+          <p class="blog-excerpt">A patient-friendly guide to hernia symptoms, lifestyle measures, surgical options, urgent warning signs and recovery after hernia repair.</p>
+          <span class="blog-link">Read article &rarr;</span>
+        </a>
+        <a class="blog-card" href="#">
+          <div class="blog-meta"><span>Patient Guidance</span><span>&middot;</span><span>9 Aug 2026</span></div>
+          <h3 class="blog-title">Choosing a Trustworthy Doctor: What Patients Should Look For</h3>
+          <p class="blog-excerpt">A practical guide to choosing a doctor who listens, explains clearly, gives honest advice and supports patients through treatment and recovery.</p>
+          <span class="blog-link">Read article &rarr;</span>
+        </a>
+        <a class="blog-card" href="#">
+          <div class="blog-meta"><span>Surgery</span><span>&middot;</span><span>9 Aug 2026</span></div>
+          <h3 class="blog-title">Day Care Surgery: Modern Surgical Care with Faster Recovery</h3>
+          <p class="blog-excerpt">What day care surgery means, which procedures may be suitable, how safety is assessed and what recovery at home usually involves.</p>
+          <span class="blog-link">Read article &rarr;</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<section id="closing-cta">
+  <div class="wrap">
+    <h2>Need to consult Dr. Kishan Rao?</h2>
+    <p>Call or WhatsApp to schedule an appointment.</p>
+    <div class="cta-row">
+      <a href="#" class="btn-primary">Call</a>
+      <a href="#" class="btn-secondary">WhatsApp</a>
+      <a href="#consultation" class="btn-secondary">View Consultation Locations</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Dr. Kishan Rao</div>
+        <div class="footer-sub">Laparoscopic Surgeon<br>MBBS (BMC), MS (Gold Medalist), FMAS, DMAS</div>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+918105232787">+91 81052 32787</a>
+        <a href="#">WhatsApp</a>
+        <a href="mailto:surgeonkishan@gmail.com">surgeonkishan@gmail.com</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube &ndash; The White Army</a>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="#home">Home</a>
+        <a href="#consultation">Consultation</a>
+        <a href="#treatment">Treatment</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#blogs">Blogs</a>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      Information on this website is for general education and appointment guidance only. It is not a substitute for personal medical advice, diagnosis or treatment. Always consult a qualified clinician for individual care decisions. Surgical suitability and outcomes vary by patient.
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dr. Kishan Rao. All rights reserved.</span>
+      <span>Developed by DealUp Strategies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.review-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
