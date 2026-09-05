@@ -6,19 +6,19 @@
 <title>Dr. Kishan Rao | Laparoscopic Surgeon in Mangalore</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;650;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;650;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 
   :root{
-    --navy-950:#0A171C;
-    --navy-900:#122730;
-    --navy-800:#1B3540;
-    --ivory-50:#F1F1EA;
-    --ivory-100:#E8E8DE;
-    --brass-500:#A9822E;
-    --brass-600:#8E6D26;
-    --ink-text:#14211F;
-    --ivory-text:#F3F3EC;
+    --navy-950:#0B2E29;
+    --navy-900:#123B34;
+    --navy-800:#1A4740;
+    --ivory-50:#EEE7D6;
+    --ivory-100:#E6DCC3;
+    --brass-500:#B08A3E;
+    --brass-600:#8F6F2E;
+    --ink-text:#182420;
+    --ivory-text:#F3EEDD;
     --header-h: 76px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -168,14 +168,18 @@
   @keyframes riseIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
 
   .stats-bar{
-    position:relative; z-index:2;
+    position:relative; z-index:2; overflow:hidden;
     max-width:1400px; margin:0 auto; padding:14px 64px 46px;
     display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
   }
+  .stats-seal{
+    position:absolute; top:-40px; right:24px; width:220px; height:220px;
+    opacity:0.09; pointer-events:none; z-index:-1;
+  }
   .stat{ text-align:left; }
   .stat-num{
-    font-family:'Inter Tight', sans-serif; font-weight:650;
-    font-size:clamp(22px, 2.6vw, 32px); color:var(--navy-950); letter-spacing:-0.01em;
+    font-family:'Newsreader', serif; font-weight:600; font-variant-numeric:oldstyle-nums;
+    font-size:clamp(24px, 2.8vw, 36px); color:var(--navy-950); letter-spacing:-0.005em;
   }
   .stat-label{ margin-top:4px; font-size:12.5px; font-weight:500; color:var(--navy-800); opacity:0.75; }
 
@@ -209,10 +213,10 @@
 
 
   :root{
-    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
-    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
-    --brass-500:#A9822E; --brass-600:#8E6D26;
-    --ink-text:#14211F; --ivory-text:#F3F3EC;
+    --navy-950:#0B2E29; --navy-900:#123B34; --navy-800:#1A4740;
+    --ivory-50:#EEE7D6; --ivory-100:#E6DCC3; --ivory-150:#DDCFAE;
+    --brass-500:#B08A3E; --brass-600:#8F6F2E;
+    --ink-text:#182420; --ivory-text:#F3EEDD;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
@@ -332,10 +336,10 @@
 
 
   :root{
-    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
-    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
-    --brass-500:#A9822E; --brass-600:#8E6D26;
-    --ink-text:#14211F; --ivory-text:#F3F3EC;
+    --navy-950:#0B2E29; --navy-900:#123B34; --navy-800:#1A4740;
+    --ivory-50:#EEE7D6; --ivory-100:#E6DCC3; --ivory-150:#DDCFAE;
+    --brass-500:#B08A3E; --brass-600:#8F6F2E;
+    --ink-text:#182420; --ivory-text:#F3EEDD;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
@@ -428,15 +432,17 @@
   .wa-lockup-sub{ font-size:12.5px; color:var(--navy-800); opacity:0.75; margin-top:2px; }
   .beyond-highlights{ display:flex; flex-direction:column; gap:22px; }
   .bh-item{ border-top:1px solid rgba(20,33,31,0.12); padding-top:16px; }
-  .bh-num{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:24px; color:var(--brass-500); }
+  .bh-num{ font-family:'Newsreader', serif; font-weight:600; font-variant-numeric:oldstyle-nums; font-size:27px; color:var(--brass-500); }
   .bh-label{ font-size:13.5px; color:var(--navy-800); margin-top:2px; }
 
   /* ---------------- TESTIMONIALS ---------------- */
   #testimonials{ background:var(--ivory-50); }
   .review-grid{ margin-top:44px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:rgba(20,33,31,0.1); }
   .review-card{ background:var(--ivory-50); padding:32px; }
+  .review-quote-mark{ width:22px; height:22px; margin-bottom:10px; opacity:0.55; }
   .review-quote{
-    font-size:16px; line-height:1.6; color:var(--navy-900);
+    font-family:'Newsreader', serif; font-style:italic; font-weight:500;
+    font-size:17.5px; line-height:1.55; color:var(--navy-900);
     display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
   }
   .review-card.open .review-quote{ -webkit-line-clamp:unset; }
@@ -479,10 +485,10 @@
 
 
   :root{
-    --navy-950:#0A171C; --navy-900:#122730; --navy-800:#1B3540;
-    --ivory-50:#F1F1EA; --ivory-100:#E8E8DE; --ivory-150:#DEDED0;
-    --brass-500:#A9822E; --brass-600:#8E6D26;
-    --ink-text:#14211F; --ivory-text:#F3F3EC;
+    --navy-950:#0B2E29; --navy-900:#123B34; --navy-800:#1A4740;
+    --ivory-50:#EEE7D6; --ivory-100:#E6DCC3; --ivory-150:#DDCFAE;
+    --brass-500:#B08A3E; --brass-600:#8F6F2E;
+    --ink-text:#182420; --ivory-text:#F3EEDD;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
@@ -570,10 +576,11 @@
     <a href="#" class="brand">
       <span class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L12 22" stroke="#F1F1EA" stroke-width="1.3"/>
-          <path d="M7 6C7 6 8.5 8 12 8C15.5 8 17 6 17 6" stroke="#A9822E" stroke-width="1.3"/>
-          <path d="M6 11C6 14.5 8.5 17 12 17C15.5 17 18 14.5 18 11" stroke="#F1F1EA" stroke-width="1.3"/>
-          <circle cx="12" cy="4" r="1.6" fill="#A9822E"/>
+          <circle cx="12" cy="12" r="10.5" stroke="#EEE7D6" stroke-width="0.9"/>
+          <line x1="12" y1="5.5" x2="12" y2="18.5" stroke="#B08A3E" stroke-width="1.1"/>
+          <path d="M9 8.2C9 8.2 10.4 9.6 12 9.6C13.6 9.6 15 8.2 15 8.2" stroke="#B08A3E" stroke-width="0.9"/>
+          <path d="M8 12.5C8 15.5 9.7 18 12 18C14.3 18 16 15.5 16 12.5" stroke="#B08A3E" stroke-width="0.9"/>
+          <circle cx="12" cy="6.4" r="0.9" fill="#B08A3E"/>
         </svg>
       </span>
       <span class="brand-text">
@@ -614,6 +621,14 @@
 </section>
 
 <div class="stats-bar">
+  <svg class="stats-seal" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="46" stroke="#B08A3E" stroke-width="1"/>
+    <circle cx="50" cy="50" r="38" stroke="#B08A3E" stroke-width="0.6"/>
+    <line x1="50" y1="20" x2="50" y2="80" stroke="#B08A3E" stroke-width="1.2"/>
+    <path d="M38 30C38 30 44 38 50 38C56 38 62 30 62 30" stroke="#B08A3E" stroke-width="1"/>
+    <path d="M34 46C34 60 41 70 50 70C59 70 66 60 66 46" stroke="#B08A3E" stroke-width="1"/>
+    <circle cx="50" cy="22" r="2.4" fill="#B08A3E"/>
+  </svg>
   <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years of Surgical Experience</div></div>
   <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Surgeries</div></div>
   <div class="stat"><div class="stat-num">5000+</div><div class="stat-label">Happy Patients</div></div>
@@ -825,36 +840,43 @@
     <h2>What patients say</h2>
     <div class="review-grid">
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;Dear Doctor....., I am writing to express my sincere gratitude for the care you provided to my child during his surgery. You explain everything in calm way. Your skill, patience and kindness created fearless environment. Because of your expertise and compassion, my child is recovering well and we are so relieved.&rdquo;</p>
           <div class="review-name">Shruthi gs</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;Incredibly grateful to Dr. Kishan Rao! He patiently waited 30 minutes when I was running late, gave me a very thorough diagnosis, and clearly explained my reports. His down-to-earth nature and willingness to be accessible over WhatsApp for any follow-ups make him stand out. Truly exceptional care!&rdquo;</p>
           <div class="review-name">Deepak Anchan</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;Dr. Kishan Rao is one of the best and most approachable doctor. I underwent fistula treatment under his care and he explained each aspect of the condition and treatment clearly. He was always available to address my doubts, especially after surgery and provided excellent support throughout my recovery.&rdquo;</p>
           <div class="review-name">Pratham</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;Dr. Kishan Bai is an exceptional General and Laparoscopic Surgeon whose surgical expertise, calm approach, and dedication to patient well-being inspire great confidence. He takes the time to listen carefully, explains the diagnosis and treatment plan in a clear and thorough manner, and patiently answers every question.&rdquo;</p>
           <div class="review-name">Sadik Bareppadi</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;I had undergone a surgery for Abscesses in the posterior perianal region, done by Dr. Kishan Rao Sir, at Bhat's Nursing Home, Mangaluru. It was excellent experience, he is very compassionate and took time to explain the diagnosis, why the procedure was needed and what to expect. Healing was faster than I expected.&rdquo;</p>
           <div class="review-name">Narayan Putran</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;I recently got successful hemorrhoids (piles) surgery. Dr Kishan Rao is best and experienced surgeon, he is kind and explained clearly about surgery. Thank you Dr. Nurse and staff's also good caring their patient.&rdquo;</p>
           <div class="review-name">Shivu Pal</div>
           <div class="review-source">5-star Google review</div>
         </div>
         <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;My friend Mr. Gopinath, 73 years old, was suffering from severe varicose veins with deep vein thrombosis and a venous ulcer. Instead of unnecessary procedures, Dr. Kishan Rao treated him with simple medicines, proper dressings, and very effective lifestyle changes. His swelling reduced significantly and he is now able to walk comfortably.&rdquo;</p>
           <div class="review-name">PP Venu</div>
           <div class="review-source">5-star Google review</div>
