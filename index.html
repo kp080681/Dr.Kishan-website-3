@@ -49,10 +49,10 @@
   }
   .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; flex-shrink:0; }
   .brand-mark{
-    width:42px; height:42px; border-radius:50%; background:var(--navy-900);
-    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:42px; height:42px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .brand-mark svg{width:22px; height:22px;}
+  .brand-mark img{ width:100%; height:100%; object-fit:contain; }
   .brand-text{ display:flex; flex-direction:column; line-height:1.15; white-space:nowrap; }
   .brand-name{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15.5px; letter-spacing:-0.005em; color:var(--navy-950); }
   .brand-tag{ font-size:11.5px; font-weight:500; letter-spacing:0.02em; color:var(--brass-600); margin-top:1px; }
@@ -587,6 +587,7 @@
   footer{ background:var(--navy-900); color:rgba(243,243,236,0.85); padding:56px 0 28px; }
   .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; }
   .footer-brand{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:18px; color:var(--ivory-text); }
+  .footer-logo{ width:88px; height:auto; margin-bottom:16px; }
   .footer-sub{ margin-top:6px; font-size:13px; color:rgba(243,243,236,0.6); }
   .footer-col h5{ font-size:12.5px; font-weight:650; letter-spacing:0.04em; color:rgba(243,243,236,0.5); margin-bottom:14px; }
   .footer-col a, .footer-col p{ display:block; font-size:14px; color:rgba(243,243,236,0.85); text-decoration:none; margin-bottom:10px; }
@@ -637,13 +638,7 @@
   <div class="header-inner">
     <a href="#home" class="brand">
       <span class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10.5" stroke="#EEE7D6" stroke-width="0.9"/>
-          <line x1="12" y1="5.5" x2="12" y2="18.5" stroke="#B08A3E" stroke-width="1.1"/>
-          <path d="M9 8.2C9 8.2 10.4 9.6 12 9.6C13.6 9.6 15 8.2 15 8.2" stroke="#B08A3E" stroke-width="0.9"/>
-          <path d="M8 12.5C8 15.5 9.7 18 12 18C14.3 18 16 15.5 16 12.5" stroke="#B08A3E" stroke-width="0.9"/>
-          <circle cx="12" cy="6.4" r="0.9" fill="#B08A3E"/>
-        </svg>
+        <img src="images/brand/surgeon-logo-header.png" alt="Surgeon logo">
       </span>
       <span class="brand-text">
         <span class="brand-name">Dr. Kishan Rao</span>
@@ -1078,6 +1073,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
+        <img src="images/brand/surgeon-logo-footer.png" alt="Surgeon logo" class="footer-logo">
         <div class="footer-brand">Dr. Kishan Rao</div>
         <div class="footer-sub">Laparoscopic Surgeon<br>MBBS (BMC), MS (Gold Medalist), FMAS, DMAS</div>
       </div>
