@@ -218,7 +218,7 @@
   body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
   img{display:block; max-width:100%;}
   .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
-  section{padding:88px 0;}
+  section{padding:60px 0;}
 
   h2{
     font-family:'Inter Tight', sans-serif; font-weight:650;
@@ -267,7 +267,7 @@
   /* ---------------- CONSULTATION ---------------- */
   #consultation{ background:var(--ivory-100); }
   .consult-grid{
-    margin-top:44px; display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:start;
+    margin-top:36px; display:grid; grid-template-columns: 1.15fr 0.85fr; gap:40px; align-items:start;
   }
   .clinic-list{ display:flex; flex-direction:column; }
   .clinic-row{
@@ -284,7 +284,7 @@
   .clinic-info{flex:1; min-width:0;}
   .clinic-name{ font-family:'Inter Tight', sans-serif; font-weight:600; font-size:17px; color:var(--navy-950); }
   .clinic-meta{
-    margin-top:4px; font-size:13.5px; color:var(--navy-800); opacity:0.8;
+    margin-top:4px; font-size:14.5px; color:var(--navy-800); opacity:0.85;
     display:flex; gap:10px; flex-wrap:wrap;
   }
   .clinic-directions{ flex-shrink:0; font-size:13px; font-weight:600; color:var(--brass-600); text-decoration:none; white-space:nowrap; }
@@ -294,10 +294,9 @@
 
   /* ---------------- TREATMENTS ---------------- */
   #treatment{ background:var(--ivory-50); }
-  .tx-groups{ margin-top:52px; display:flex; flex-direction:column; gap:80px; }
-  .tx-group{ display:grid; grid-template-columns: 0.95fr 1.05fr; gap:56px; align-items:center; }
-  .tx-group:nth-child(even){ grid-template-columns: 1.05fr 0.95fr; }
-  .tx-group:nth-child(even) .tx-media{ order:2; }
+  .tx-groups{ margin-top:40px; display:flex; flex-direction:column; gap:52px; }
+  .tx-group{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap:48px; align-items:center; }
+  .tx-media{ order:2; }
   .tx-media{ aspect-ratio: 5/4; }
   .tx-copy h3{
     font-family:'Inter Tight', sans-serif; font-weight:650; font-size:clamp(19px, 2vw, 24px);
@@ -316,13 +315,13 @@
   .tx-item.open .tx-readmore svg{ transform:rotate(180deg); }
   .tx-item-body{ max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
   .tx-item.open .tx-item-body{ max-height:200px; }
-  .tx-item-body p{ padding:0 0 20px; font-size:14.5px; line-height:1.6; color:var(--navy-800); max-width:520px; }
+  .tx-item-body p{ padding:0 0 18px; font-size:15.5px; line-height:1.6; color:var(--navy-800); max-width:540px; }
 
   @media (max-width: 900px){
     .consult-grid{ grid-template-columns:1fr; }
     .consult-media{ position:static; order:-1; aspect-ratio:4/5; }
-    .tx-group, .tx-group:nth-child(even){ grid-template-columns:1fr; }
-    .tx-group .tx-media, .tx-group:nth-child(even) .tx-media{ order:-1; aspect-ratio:16/10; }
+    .tx-group{ grid-template-columns:1fr; }
+    .tx-media{ order:-1; aspect-ratio:16/10; }
     .media-frame.feather-left img, .media-frame.feather-right img{
       -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
@@ -342,7 +341,7 @@
   body{ font-family:'Inter', sans-serif; background:var(--ivory-50); color:var(--ink-text); -webkit-font-smoothing:antialiased; }
   img{display:block; max-width:100%;}
   .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
-  section{padding:88px 0;}
+  section{padding:60px 0;}
   h2{
     font-family:'Inter Tight', sans-serif; font-weight:650;
     font-size:clamp(26px, 3.4vw, 40px); letter-spacing:-0.01em; line-height:1.15;
@@ -385,9 +384,9 @@
 
   /* ---------------- ABOUT ---------------- */
   #about{ background:var(--ivory-50); }
-  .about-grid{ margin-top:44px; display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start; }
+  .about-grid{ margin-top:44px; display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:start; }
   .about-media{ aspect-ratio:3/4; position:sticky; top:60px; }
-  .about-body p{ font-size:16px; color:var(--navy-900); margin-bottom:18px; max-width:620px; }
+  .about-body p{ font-size:17.5px; color:var(--navy-900); margin-bottom:16px; max-width:640px; line-height:1.6; }
   .about-toggle{
     margin-top:6px; background:none; border:none; padding:0;
     font-size:14px; font-weight:600; color:var(--brass-600); cursor:pointer;
@@ -402,7 +401,7 @@
   }
   .profile-block ul{ list-style:none; }
   .profile-block li{
-    font-size:14.5px; color:var(--navy-800); line-height:1.6; padding:7px 0 7px 16px;
+    font-size:15.5px; color:var(--navy-800); line-height:1.6; padding:8px 0 8px 16px;
     position:relative; border-bottom:1px solid rgba(20,33,31,0.07);
   }
   .profile-block li::before{
@@ -412,32 +411,32 @@
 
   /* ---------------- WHY CHOOSE ---------------- */
   #why-choose{ background:var(--ivory-100); }
-  .wc-lead{ max-width:640px; margin-top:18px; font-size:16px; color:var(--navy-900); }
-  .wc-points{ margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .wc-lead{ max-width:660px; margin-top:14px; font-size:17px; color:var(--navy-900); }
+  .wc-points{ margin-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .wc-point h4{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:17px; color:var(--navy-950); }
-  .wc-point p{ margin-top:8px; font-size:14.5px; color:var(--navy-800); }
+  .wc-point p{ margin-top:6px; font-size:15.5px; color:var(--navy-800); }
 
   /* ---------------- BEYOND SURGERY ---------------- */
-  #beyond{ background:var(--navy-950); color:var(--ivory-text); }
-  #beyond h2{ color:var(--ivory-text); }
+  #beyond{ background:var(--ivory-100); color:var(--ink-text); }
+  #beyond h2{ color:var(--navy-950); }
   .beyond-media{ aspect-ratio:16/9; margin-top:44px; }
-  .beyond-body{ margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
-  .beyond-text p{ font-size:15.5px; line-height:1.7; color:rgba(243,243,236,0.85); max-width:560px; }
+  .beyond-body{ margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; }
+  .beyond-text p{ font-size:16.5px; line-height:1.7; color:var(--navy-900); max-width:560px; }
   .wa-lockup{ display:flex; align-items:center; gap:16px; margin-top:22px; }
   .wa-lockup img{ width:56px; height:56px; border-radius:50%; }
-  .wa-lockup-text{ font-family:'Inter Tight', sans-serif; font-weight:600; font-size:14.5px; color:var(--ivory-text); }
-  .wa-lockup-sub{ font-size:12.5px; color:rgba(243,243,236,0.6); margin-top:2px; }
+  .wa-lockup-text{ font-family:'Inter Tight', sans-serif; font-weight:600; font-size:14.5px; color:var(--navy-950); }
+  .wa-lockup-sub{ font-size:12.5px; color:var(--navy-800); opacity:0.75; margin-top:2px; }
   .beyond-highlights{ display:flex; flex-direction:column; gap:22px; }
-  .bh-item{ border-top:1px solid rgba(243,243,236,0.15); padding-top:16px; }
+  .bh-item{ border-top:1px solid rgba(20,33,31,0.12); padding-top:16px; }
   .bh-num{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:24px; color:var(--brass-500); }
-  .bh-label{ font-size:13.5px; color:rgba(243,243,236,0.75); margin-top:2px; }
+  .bh-label{ font-size:13.5px; color:var(--navy-800); margin-top:2px; }
 
   /* ---------------- TESTIMONIALS ---------------- */
   #testimonials{ background:var(--ivory-50); }
   .review-grid{ margin-top:44px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:rgba(20,33,31,0.1); }
   .review-card{ background:var(--ivory-50); padding:32px; }
   .review-quote{
-    font-size:15px; line-height:1.65; color:var(--navy-900);
+    font-size:16px; line-height:1.6; color:var(--navy-900);
     display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
   }
   .review-card.open .review-quote{ -webkit-line-clamp:unset; }
@@ -490,7 +489,7 @@
   img{display:block; max-width:100%;}
   a{color:inherit;}
   .wrap{max-width:1400px; margin:0 auto; padding:0 64px;}
-  section{padding:88px 0;}
+  section{padding:60px 0;}
   h2{
     font-family:'Inter Tight', sans-serif; font-weight:650;
     font-size:clamp(26px, 3.4vw, 40px); letter-spacing:-0.01em; line-height:1.15;
@@ -530,7 +529,7 @@
     margin-top:12px; font-family:'Inter Tight', sans-serif; font-weight:650;
     font-size:17px; line-height:1.3; color:var(--navy-950);
   }
-  .blog-excerpt{ margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--navy-800); }
+  .blog-excerpt{ margin-top:10px; font-size:14.5px; line-height:1.6; color:var(--navy-800); }
   .blog-link{ margin-top:16px; display:inline-block; font-size:13px; font-weight:600; color:var(--navy-950); }
 
   /* ---------------- CLOSING CTA ---------------- */
@@ -653,7 +652,7 @@
     <div class="tx-groups">
 
       <div class="tx-group">
-        <div class="tx-media media-frame feather-right reveal">
+        <div class="tx-media media-frame feather-left reveal">
           <img src="images/treatments/laser.jpg" alt="LASER surgical consultation">
         </div>
         <div class="tx-copy">
@@ -685,7 +684,7 @@
       </div>
 
       <div class="tx-group">
-        <div class="tx-media media-frame feather-right reveal">
+        <div class="tx-media media-frame feather-left reveal">
           <img src="images/treatments/general.jpg" alt="General surgical consultation">
         </div>
         <div class="tx-copy">
@@ -708,10 +707,10 @@
   <div class="wrap">
     <h2>About Dr. Kishan Rao</h2>
     <div class="about-grid">
-      <div class="about-media media-frame feather-right reveal" style="--face-y:4%">
+      <div class="about-media media-frame feather-left reveal" style="--face-y:4%; order:2;">
         <img src="images/about/portrait.jpg" alt="Dr. Kishan Rao">
       </div>
-      <div class="about-body">
+      <div class="about-body" style="order:1;">
         <p>Dr. Kishan Rao is a highly experienced and respected surgeon with more than 10 years of experience in the surgical field.</p>
         <p>He is extremely empathetic to his patients, treating them like family, and always maintains high professional integrity and ethical standards.</p>
         <p>He specializes in General Surgery, Laparoscopic Surgery and Advanced LASER Surgery, and performs a wide range of basic and advanced surgical procedures. He has a strong interest in using newer technology and advances in surgical care to support safe, appropriate treatment for his patients.</p>
