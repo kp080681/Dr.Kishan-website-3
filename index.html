@@ -22,12 +22,14 @@
     --header-h: 76px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     font-family:'Inter', sans-serif;
     background:var(--ivory-50);
     color:var(--ink-text);
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    max-width:100vw;
   }
   img{display:block; max-width:100%;}
 
@@ -65,6 +67,9 @@
   }
   .header-cta:hover{background:var(--navy-800);}
   .nav-desktop-only{display:flex;}
+  .nav-toggle{ display:none; background:none; border:none; padding:6px; cursor:pointer; color:var(--navy-950); }
+  .nav-toggle svg{ width:24px; height:24px; }
+  .mobile-nav{ display:none; position:absolute; top:100%; left:0; right:0; }
 
   /* ---------- HERO: single merged canvas ---------- */
   .hero{
@@ -191,6 +196,23 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 980px){
     nav.nav-desktop-only{display:none;}
+    .nav-toggle{ display:inline-flex; }
+    .mobile-nav{
+      display:block; max-height:0; overflow:hidden;
+      background:var(--ivory-50); border-top:1px solid rgba(11,46,41,0.1);
+      transition:max-height 0.3s ease;
+      box-shadow:0 12px 24px rgba(11,46,41,0.08);
+    }
+    .mobile-nav.open{ max-height:400px; }
+    .mobile-nav a{
+      display:block;
+      padding:14px 24px; font-size:15px; font-weight:500; color:var(--navy-950);
+      text-decoration:none; border-bottom:1px solid rgba(11,46,41,0.06);
+    }
+    .nav-toggle .nt-line{ transition:transform 0.2s ease, opacity 0.2s ease; transform-origin:12px 12px; }
+    .nav-toggle.open .nt-1{ transform:translateY(5px) rotate(45deg); }
+    .nav-toggle.open .nt-2{ opacity:0; }
+    .nav-toggle.open .nt-3{ transform:translateY(-5px) rotate(-45deg); }
     .hero{ min-height:auto; max-height:none; display:block; }
     .hero-media{ height:56vh; min-height:380px; max-height:600px; }
     .hero-media img{
@@ -574,6 +596,29 @@
     .footer-grid{ grid-template-columns:1fr; gap:28px; }
   }
 
+  /* ---------------- MOBILE STICKY CTA BAR ---------------- */
+  .mobile-cta-bar{ display:none; }
+  @media (max-width: 720px){
+    body{ padding-bottom:64px; }
+    .mobile-cta-bar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:60;
+      background:rgba(238,231,214,0.96); backdrop-filter:blur(10px);
+      border-top:1px solid rgba(11,46,41,0.12);
+      padding:8px 10px; padding-bottom:calc(8px + env(safe-area-inset-bottom));
+      gap:8px;
+    }
+    .mobile-cta-item{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:2px; padding:6px 4px; text-decoration:none; color:var(--navy-950);
+      font-size:11px; font-weight:600; border-radius:6px;
+    }
+    .mobile-cta-item svg{ width:19px; height:19px; }
+    .mobile-cta-item--primary{
+      flex:1.6; background:var(--navy-950); color:var(--ivory-text);
+      font-size:12.5px; justify-content:center;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -605,8 +650,21 @@
       <a href="#blogs">Blogs</a>
     </nav>
     <a href="#book" class="header-cta">Book Consultation</a>
+    <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.toggle('open'); this.classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none"><path class="nt-line nt-1" d="M4 7h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-line nt-2" d="M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-line nt-3" d="M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#home" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="#consultation" onclick="document.getElementById('mobileNav').classList.remove('open')">Consultation</a>
+    <a href="#treatment" onclick="document.getElementById('mobileNav').classList.remove('open')">Treatment</a>
+    <a href="#about" onclick="document.getElementById('mobileNav').classList.remove('open')">About</a>
+    <a href="#testimonials" onclick="document.getElementById('mobileNav').classList.remove('open')">Testimonials</a>
+    <a href="#gallery" onclick="document.getElementById('mobileNav').classList.remove('open')">Gallery</a>
+    <a href="#blogs" onclick="document.getElementById('mobileNav').classList.remove('open')">Blogs</a>
+  </nav>
 </header>
+
 
 <section class="hero" id="home">
   <div class="hero-media">
@@ -910,7 +968,7 @@
           <div class="book-title">Surgery Simplified for Students</div>
           <div class="book-note">Author</div>
         </div>
-        <a class="book-action" href="#">Know more</a>
+        <a class="book-action" href="https://prithvibooks.com/product/surgery-simplified-for-students-solved-question-papers-bds-general-surgery-exam-preparatory-guide/" target="_blank" rel="noopener">Know more</a>
       </div>
       <div class="book-row">
         <div class="book-cover"><img src="images/books/case-proformas.jpg" alt="All in 1 Clinical Case Proformas book cover"></div>
@@ -1042,6 +1100,21 @@
     </div>
   </div>
 </footer>
+
+<div class="mobile-cta-bar">
+  <a href="tel:+918105232787" class="mobile-cta-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <span>Call</span>
+  </a>
+  <a href="#" class="mobile-cta-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 7 3 12c0 1.7.5 3.4 1.3 4.8L3 21l4.3-1.3C8.7 20.5 10.3 21 12 21c5 0 9-4 9-9s-4-9-9-9z" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 10c.3 2.5 2.5 4.7 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="#" class="mobile-cta-item mobile-cta-item--primary">
+    <span>Book Consultation</span>
+  </a>
+</div>
+
 
 <script>
   const io = new IntersectionObserver((entries) => {
