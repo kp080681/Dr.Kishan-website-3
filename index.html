@@ -609,7 +609,8 @@
     .wrap{ padding:0 24px; }
     section{ padding:40px 0; }
     .g-grid{ grid-template-columns:repeat(2, 1fr); }
-    .blog-grid{ grid-template-columns:1fr; }
+    .blog-grid{ grid-template-columns:1fr !important; }
+    .blog-card:last-child{ grid-column: span 1 !important; }
     .footer-grid{ grid-template-columns:1fr; gap:28px; }
   }
 
@@ -713,7 +714,7 @@
 
 <section id="consultation">
   <div class="wrap">
-    <h2>Where patients can consult Dr. Kishan Rao</h2>
+    <h2>Where patients can consult <span style="white-space:nowrap;">Dr. Kishan Rao</span></h2>
     <div class="consult-grid">
       <div class="clinic-list">
         <div class="clinic-row"><div class="clinic-mark clinic-mark--logo"><img src="images/clinics/aj-hospital.png" alt="AJ Hospital logo"></div><div class="clinic-info"><div class="clinic-name">AJ Hospital, Mangaluru</div><div class="clinic-meta"><span>Monday to Friday</span><span>&middot;</span><span>9:00 AM&ndash;10:00 AM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=NH-66%2C%20Kuntikana%2C%20Mangaluru%2C%20Karnataka%20575004" target="_blank" rel="noopener">Directions</a></div>
@@ -790,7 +791,7 @@
 
 <section id="about">
   <div class="wrap">
-    <h2>About Dr. Kishan Rao</h2>
+    <h2>About <span style="white-space:nowrap;">Dr. Kishan Rao</span></h2>
     <div class="about-grid">
       <div class="about-media media-frame feather-left reveal" style="--face-y:0%; order:2;">
         <img src="images/hero/portrait.jpg" alt="Dr. Kishan Rao">
@@ -1065,7 +1066,7 @@
 
 <section id="closing-cta">
   <div class="wrap">
-    <h2>Need to consult Dr. Kishan Rao?</h2>
+    <h2>Need to consult <span style="white-space:nowrap;">Dr. Kishan Rao?</span></h2>
     <p>Call or WhatsApp to schedule an appointment.</p>
     <div class="cta-row">
       <a href="tel:+918105232787" class="btn-primary">Call</a>
