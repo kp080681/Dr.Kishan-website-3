@@ -559,6 +559,18 @@
 
   /* ---------------- GALLERY ---------------- */
   #gallery{ background:var(--ivory-100); }
+
+  /* ---------------- FAQ ---------------- */
+  #faq{ background:var(--ivory-50); }
+  .faq-intro{ margin-top:14px; font-size:17px; color:var(--navy-800); max-width:640px; }
+  .faq-groups{ margin-top:44px; display:flex; flex-direction:column; gap:36px; }
+  .faq-group h3{
+    font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15px;
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--brass-600);
+    margin-bottom:6px;
+  }
+  .faq-list{ display:flex; flex-direction:column; }
+  .faq-list .tx-item:first-child{ border-top:1px solid rgba(20,33,31,0.1); }
   .g-grid{
     margin-top:44px; display:grid; grid-template-columns:repeat(4, 1fr);
     gap:4px;
@@ -659,6 +671,7 @@
       <a href="#about">About</a>
       <a href="#testimonials">Testimonials</a>
       <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
       <a href="#blogs">Blogs</a>
     </nav>
     <a href="#consultation" class="header-cta">Book Consultation</a>
@@ -673,6 +686,7 @@
     <a href="#about" onclick="document.getElementById('mobileNav').classList.remove('open')">About</a>
     <a href="#testimonials" onclick="document.getElementById('mobileNav').classList.remove('open')">Testimonials</a>
     <a href="#gallery" onclick="document.getElementById('mobileNav').classList.remove('open')">Gallery</a>
+    <a href="#faq" onclick="document.getElementById('mobileNav').classList.remove('open')">FAQ</a>
     <a href="#blogs" onclick="document.getElementById('mobileNav').classList.remove('open')">Blogs</a>
   </nav>
 </header>
@@ -1026,6 +1040,136 @@
   </div>
 </section>
 
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Patient FAQs</h2>
+    <p class="faq-intro">Clear answers to common questions about the conditions Dr. Kishan Rao treats.</p>
+    <div class="faq-groups">
+      <div class="faq-group">
+        <h3>LASER</h3>
+        <div class="faq-list">
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Varicose Veins?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Varicose veins are enlarged, twisted superficial veins, most often seen in the legs. They can cause heaviness, aching, swelling, itching or visible bulging veins.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Fistula?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>An anal fistula is an abnormal tract between the anal canal and nearby skin. It often follows an abscess or infection around an anal gland.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Fissure?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>An anal fissure is a small tear near the anal opening. It can be painful, especially during or after passing stool, and is often linked to hard stools or repeated irritation.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Piles?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Piles are swollen blood vessels around the anus or lower rectum. They are common and may range from mild irritation to bleeding, swelling or prolapse.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Pilonidal Sinus?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Pilonidal sinus is a small tunnel or cavity near the cleft between the buttocks. It can remain quiet, become painful or repeatedly discharge.</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-group">
+        <h3>Laparoscopic</h3>
+        <div class="faq-list">
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Gallbladder Stones?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Gallstones are hardened deposits that form inside the gallbladder. Many are silent, but some cause pain or complications when they block bile flow.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Appendix Infection?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Appendicitis is inflammation of the appendix. It can progress quickly, so persistent or worsening abdominal pain should be assessed promptly.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Hernia?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>A hernia is a bulge caused by tissue pushing through a weak area in the abdominal wall or groin. It may be painless at first or may cause discomfort with activity.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is GERD?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>GERD (gastroesophageal reflux disease) occurs when stomach acid regularly flows back into the tube connecting the mouth and stomach, irritating its lining.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Uterus &ndash; Ovary Tumors?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Growths that develop in or on the uterus or ovaries, ranging from benign cysts and fibroids to conditions that require surgical evaluation and management.</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-group">
+        <h3>General</h3>
+        <div class="faq-list">
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Breast Lump?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>A breast lump is a mass or swelling in breast tissue that may be benign or require further evaluation, commonly assessed through clinical examination and imaging.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Thyroid, Parotid Tumor?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>The thyroid is a gland in the front of the neck. Thyroid surgery may be considered for selected nodules, enlargement, pressure symptoms, overactivity or suspected cancer.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Hydrocele, Varicocele, Phimosis?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>A group of common urological conditions &mdash; fluid collection, vein enlargement, or foreskin tightness &mdash; assessed individually to determine the appropriate care.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Diabetic Foot?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Diabetic foot wounds need careful attention because diabetes can affect sensation, blood flow and healing. Early assessment can reduce the risk of infection and deeper tissue damage.</p></div></div>
+          </div>
+          <div class="tx-item">
+            <div class="tx-item-head" onclick="toggleCond(this)">
+              <span class="tx-item-name">What is Ulcer / Gangrene?</span>
+              <span class="tx-readmore">Answer <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            </div>
+            <div class="tx-item-body"><div class="cond-detail"><p>Non-healing wounds or tissue loss requiring assessment of circulation and infection, with timely surgical care to prevent further complications.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="blogs">
   <div class="wrap">
     <h2>Patient education in simple language</h2>
@@ -1101,6 +1245,7 @@
         <a href="#about">About</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
         <a href="#blogs">Blogs</a>
       </div>
     </div>
