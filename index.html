@@ -132,9 +132,8 @@
 
   .hero-name{
     font-family:'Inter Tight', sans-serif; font-weight:650;
-    font-size:clamp(28px, 6.2vw, 54px); line-height:1.04; letter-spacing:-0.015em;
-    color:var(--navy-950); white-space:nowrap; text-align:center;
-    width:min(680px, 58%); margin-bottom:22px;
+    font-size:clamp(28px, 6.5vw, 56px); line-height:1.04; letter-spacing:-0.015em;
+    color:var(--navy-950); white-space:nowrap;
     opacity:0; animation:riseIn 0.7s ease-out 0.1s forwards;
   }
   .hero-credentials{
@@ -226,7 +225,6 @@
     }
     .hero-media::after{ background:linear-gradient(to bottom, transparent 55%, var(--navy-950) 100%); opacity:0.10; }
     .hero-copy{ position:static; padding:0 24px 40px; margin-top:-56px; }
-    .hero-name{ width:100%; }
     .hero-copy-inner{ max-width:none; }
     .stats-bar{ grid-template-columns:repeat(2, 1fr); padding:6px 24px 40px; row-gap:24px; }
     .header-inner{ padding:0 20px; }
@@ -699,8 +697,8 @@
     <img src="images/hero/portrait.jpg" alt="Dr. Kishan Rao, General, Laparoscopic and LASER Surgeon">
   </div>
   <div class="hero-copy">
-    <h1 class="hero-name">Dr. Kishan Rao</h1>
     <div class="hero-copy-inner">
+      <h1 class="hero-name">Dr. Kishan Rao</h1>
       <p class="hero-credentials">MBBS (BMC) &middot; MS (Gold Medalist) &middot; FMAS &middot; DMAS</p>
       <p class="hero-designation">General, Laparoscopic and LASER Surgeon</p>
       <p class="hero-tagline">Precise practice. Compassionate care.</p>
