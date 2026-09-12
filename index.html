@@ -53,8 +53,8 @@
     display:flex; align-items:center; justify-content:center;
   }
   .brand-mark img{ height:100%; width:auto; object-fit:contain; }
-  .brand-text{ display:flex; flex-direction:column; line-height:1.15; white-space:nowrap; }
-  .brand-name{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15.5px; letter-spacing:-0.005em; color:var(--navy-950); }
+  .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
+  .brand-name{ white-space:nowrap; font-family:'Inter Tight', sans-serif; font-weight:650; font-size:15.5px; letter-spacing:-0.005em; color:var(--navy-950); }
   .brand-tag{ font-size:11.5px; font-weight:500; letter-spacing:0.02em; color:var(--brass-600); margin-top:1px; }
   nav{ display:flex; align-items:center; gap:28px; }
   nav a{ font-size:14px; font-weight:500; color:var(--navy-900); text-decoration:none; opacity:0.8; transition:opacity 0.15s ease; white-space:nowrap; }
@@ -175,7 +175,7 @@
   .stats-bar{
     position:relative; z-index:2; overflow:hidden;
     max-width:1400px; margin:0 auto; padding:14px 64px 46px;
-    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
   }
   .stats-seal{
     position:absolute; top:-40px; right:24px; width:220px; height:220px;
@@ -226,7 +226,7 @@
     .hero-media::after{ background:linear-gradient(to bottom, transparent 55%, var(--navy-950) 100%); opacity:0.10; }
     .hero-copy{ position:static; padding:0 24px 40px; margin-top:-56px; }
     .hero-copy-inner{ max-width:none; }
-    .stats-bar{ grid-template-columns:repeat(2, 1fr); padding:6px 24px 40px; row-gap:24px; }
+    .stats-bar{ grid-template-columns:repeat(3, 1fr); padding:6px 24px 40px; row-gap:24px; gap:12px; }
     .header-inner{ padding:0 20px; }
     .header-cta{ padding:9px 16px; font-size:12.5px; }
   }
@@ -258,7 +258,7 @@
   .media-frame{ position:relative; overflow:visible; }
   .media-frame{ --face-y: 0%; }
   .media-frame img{
-    width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y);
+    width:100%; height:100%; object-fit:cover; object-position:var(--face-x, 50%) var(--face-y);
     transition:transform 0.2s ease;
   }
   .media-frame::after{
@@ -395,7 +395,7 @@
   p{ line-height:1.65; }
 
   .media-frame{ position:relative; overflow:visible; --face-y:0%; }
-  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y); transition:transform 0.2s ease; }
+  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:var(--face-x, 50%) var(--face-y); transition:transform 0.2s ease; }
   .media-frame::after{ content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:0.13; }
   .feather-left img{
     -webkit-mask-image: linear-gradient(96deg, transparent 0%, transparent 3%, black 30%), linear-gradient(to bottom, black 85%, transparent 100%);
@@ -500,7 +500,7 @@
     border-bottom:1px solid rgba(20,33,31,0.1);
   }
   .book-row:first-child{ padding-top:0; }
-  .book-cover{ flex-shrink:0; width:88px; aspect-ratio:3/4; overflow:hidden; box-shadow:0 8px 24px rgba(10,23,28,0.14); }
+  .book-cover{ flex-shrink:0; width:130px; aspect-ratio:3/4; overflow:hidden; box-shadow:0 8px 24px rgba(10,23,28,0.14); }
   .book-cover img{ width:100%; height:100%; object-fit:cover; }
   .book-info{ flex:1; }
   .book-title{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:18px; color:var(--navy-950); }
@@ -519,7 +519,7 @@
     .beyond-body{ grid-template-columns:1fr; gap:32px; }
     .review-grid{ grid-template-columns:1fr; }
     .book-row{ gap:20px; }
-    .book-cover{ width:64px; }
+    .book-cover{ width:96px; }
     .media-frame.feather-left img, .media-frame.feather-right img{
       -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
@@ -547,7 +547,7 @@
   }
 
   .media-frame{ position:relative; overflow:hidden; --face-y:0%; }
-  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:50% var(--face-y); transition:transform 0.5s ease; }
+  .media-frame img{ width:100%; height:100%; object-fit:cover; object-position:var(--face-x, 50%) var(--face-y); transition:transform 0.5s ease; }
   .reveal{ opacity:0; transform:translateY(16px); transition:opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in-view{ opacity:1; transform:translateY(0); }
   .reveal.in-view img{ animation:slowZoom 16s ease-out forwards; }
@@ -597,24 +597,25 @@
   /* ---------------- CLOSING CTA ---------------- */
   #closing-cta{ background:var(--ivory-100); color:var(--ink-text); text-align:left; border-top:1px solid rgba(20,33,31,0.1); }
   #closing-cta h2{ color:var(--navy-950); max-width:560px; }
+  .closing-heading{ white-space:nowrap; font-size:clamp(17px, 5.2vw, 40px) !important; }
   #closing-cta p{ margin-top:14px; color:var(--navy-800); font-size:16.5px; }
   .cta-row{ margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; }
 
   /* ---------------- FOOTER ---------------- */
-  footer{ background:var(--navy-900); color:rgba(243,243,236,0.85); padding:56px 0 28px; }
-  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; }
-  .footer-brand{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:18px; color:var(--ivory-text); }
-  .footer-logo{ width:88px; height:auto; margin-bottom:16px; }
-  .footer-sub{ margin-top:6px; font-size:13px; color:rgba(243,243,236,0.6); }
-  .footer-col h5{ font-size:12.5px; font-weight:650; letter-spacing:0.04em; color:rgba(243,243,236,0.5); margin-bottom:14px; }
-  .footer-col a, .footer-col p{ display:block; font-size:14px; color:rgba(243,243,236,0.85); text-decoration:none; margin-bottom:10px; }
+  footer{ background:var(--navy-900); color:rgba(243,243,236,0.85); padding:72px 0 36px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:56px; }
+  .footer-brand{ font-family:'Inter Tight', sans-serif; font-weight:650; font-size:23px; color:var(--ivory-text); }
+  .footer-logo{ width:104px; height:auto; margin-bottom:18px; }
+  .footer-sub{ margin-top:8px; font-size:15.5px; line-height:1.5; color:rgba(243,243,236,0.65); }
+  .footer-col h5{ font-size:14px; font-weight:650; letter-spacing:0.04em; color:rgba(243,243,236,0.55); margin-bottom:18px; }
+  .footer-col a, .footer-col p{ display:block; font-size:16px; color:rgba(243,243,236,0.85); text-decoration:none; margin-bottom:13px; }
   .footer-disclaimer{
-    margin-top:44px; padding-top:24px; border-top:1px solid rgba(243,243,236,0.12);
-    font-size:12px; line-height:1.6; color:rgba(243,243,236,0.45); max-width:760px;
+    margin-top:52px; padding-top:28px; border-top:1px solid rgba(243,243,236,0.12);
+    font-size:13px; line-height:1.7; color:rgba(243,243,236,0.5); max-width:780px;
   }
   .footer-bottom{
-    margin-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:12px; color:rgba(243,243,236,0.4);
+    margin-top:28px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:13px; color:rgba(243,243,236,0.45);
   }
 
   @media (max-width: 900px){
@@ -626,27 +627,28 @@
     .footer-grid{ grid-template-columns:1fr; gap:28px; }
   }
 
-  /* ---------------- MOBILE STICKY CTA BAR ---------------- */
-  .mobile-cta-bar{ display:none; }
+  /* ---------------- STICKY CTA BAR (all screen sizes) ---------------- */
+  body{ padding-bottom:64px; }
+  .mobile-cta-bar{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:rgba(238,231,214,0.96); backdrop-filter:blur(10px);
+    border-top:1px solid rgba(11,46,41,0.12);
+    padding:8px 10px; padding-bottom:calc(8px + env(safe-area-inset-bottom));
+    gap:8px; max-width:480px; margin:0 auto; right:0; left:0;
+    border-radius:10px 10px 0 0; box-shadow:0 -6px 24px rgba(11,46,41,0.1);
+  }
+  .mobile-cta-item{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:2px; padding:6px 4px; text-decoration:none; color:var(--navy-950);
+    font-size:11px; font-weight:600; border-radius:6px;
+  }
+  .mobile-cta-item svg{ width:19px; height:19px; }
+  .mobile-cta-item--primary{
+    flex:1.6; background:var(--navy-950); color:var(--ivory-text);
+    font-size:12.5px; justify-content:center;
+  }
   @media (max-width: 720px){
-    body{ padding-bottom:64px; }
-    .mobile-cta-bar{
-      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:60;
-      background:rgba(238,231,214,0.96); backdrop-filter:blur(10px);
-      border-top:1px solid rgba(11,46,41,0.12);
-      padding:8px 10px; padding-bottom:calc(8px + env(safe-area-inset-bottom));
-      gap:8px;
-    }
-    .mobile-cta-item{
-      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:2px; padding:6px 4px; text-decoration:none; color:var(--navy-950);
-      font-size:11px; font-weight:600; border-radius:6px;
-    }
-    .mobile-cta-item svg{ width:19px; height:19px; }
-    .mobile-cta-item--primary{
-      flex:1.6; background:var(--navy-950); color:var(--ivory-text);
-      font-size:12.5px; justify-content:center;
-    }
+    .mobile-cta-bar{ max-width:none; border-radius:0; box-shadow:none; }
   }
 
 </style>
@@ -661,7 +663,7 @@
       </span>
       <span class="brand-text">
         <span class="brand-name">Dr. Kishan Rao</span>
-        <span class="brand-tag">Laparoscopic Surgeon</span>
+        <span class="brand-tag">General, Laparoscopic and LASER Surgeon</span>
       </span>
     </a>
     <nav class="nav-desktop-only">
@@ -705,7 +707,8 @@
       <p class="hero-avail">Consultations available by prior appointment across Mangalore, Puttur and Sullia.</p>
       <div class="hero-ctas">
         <a href="#consultation" class="btn-primary">Book Consultation</a>
-        <a href="#whatsapp" class="btn-secondary">WhatsApp</a>
+        <a href="tel:+918105232787" class="btn-secondary">Call</a>
+        <a href="https://wa.me/918105232787" target="_blank" rel="noopener" class="btn-secondary">WhatsApp</a>
       </div>
     </div>
   </div>
@@ -721,9 +724,8 @@
     <circle cx="50" cy="22" r="2.4" fill="#B08A3E"/>
   </svg>
   <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years of Surgical Experience</div></div>
-  <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Surgeries</div></div>
-  <div class="stat"><div class="stat-num">5000+</div><div class="stat-label">Happy Patients</div></div>
-  <div class="stat"><div class="stat-num">3000+</div><div class="stat-label">Hours of Surgery</div></div>
+  <div class="stat"><div class="stat-num">2500+</div><div class="stat-label">Surgeries</div></div>
+  <div class="stat"><div class="stat-num">15000+</div><div class="stat-label">Happy Patients</div></div>
 </div>
 
 <section id="consultation">
@@ -739,7 +741,7 @@
         <div class="clinic-row"><div class="clinic-mark">CH</div><div class="clinic-info"><div class="clinic-name">Colaco Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Bendoorwell%20Main%20Road%2C%20Bendoor%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Directions</a></div>
         <div class="clinic-row"><div class="clinic-mark clinic-mark--logo"><img src="images/clinics/yenepoya-hospital.jpg" alt="Yenepoya Specialty Hospital logo"></div><div class="clinic-info"><div class="clinic-name">Yenepoya Specialty Hospital</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Kodialbail%2C%20Mangaluru%2C%20Karnataka%20575003" target="_blank" rel="noopener">Directions</a></div>
       </div>
-      <div class="consult-media media-frame feather-left reveal" style="--face-y:38%">
+      <div class="consult-media media-frame feather-left reveal" style="--face-x:43%; --face-y:0%">
         <img src="images/consultation/consultation.jpg" alt="Dr. Kishan Rao consulting with a patient">
       </div>
     </div>
@@ -928,7 +930,7 @@
 
 <section id="testimonials">
   <div class="wrap">
-    <h2>What patients say</h2>
+    <h2>Testimonials</h2>
     <div class="review-grid">
         <div class="review-card">
           <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
@@ -978,7 +980,7 @@
 
 <section id="books">
   <div class="wrap">
-    <h2>Books &amp; publications</h2>
+    <h2>Books &amp; Publications</h2>
     <div class="book-list">
       <div class="book-row">
         <div class="book-cover"><img src="images/books/language-of-healthcare.jpg" alt="Language of Healthcare book cover"></div>
@@ -1210,7 +1212,7 @@
 
 <section id="closing-cta">
   <div class="wrap">
-    <h2>Need to consult <span style="white-space:nowrap;">Dr. Kishan Rao?</span></h2>
+    <h2 class="closing-heading">Need to consult Dr. Kishan Rao?</h2>
     <p>Call or WhatsApp to schedule an appointment.</p>
     <div class="cta-row">
       <a href="tel:+918105232787" class="btn-primary">Call</a>
