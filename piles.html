@@ -42,7 +42,9 @@ ul{list-style:none}
 /* hero */
 .hero{background:linear-gradient(180deg,var(--ivory-50) 0%,var(--ivory-100) 100%);padding:26px 0 34px}
 .hero-grid{display:grid;gap:24px}
-.hero h1{font-size:clamp(31px,7.6vw,50px);letter-spacing:-.018em}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:14.5px;font-weight:600;color:var(--brass-600);letter-spacing:.01em}
+.eyebrow::before{content:"";width:28px;height:1.5px;background:var(--brass-500);flex:none}
+.hero h1{font-size:clamp(34px,9vw,58px);letter-spacing:-.02em;line-height:1.08}
 .lead{margin-top:14px;font-size:clamp(18px,2.4vw,20px);color:#27342f;max-width:32em}
 .lead b{display:block;color:var(--navy-950);font-weight:600;margin-bottom:4px}
 .hero .ctas{margin-top:22px}
@@ -111,6 +113,8 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
 /* sticky bar, phones only */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(238,231,214,.97);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid rgba(11,46,41,.16)}
 .sticky .btn{flex:1;min-height:52px;padding:0 10px;font-size:16.5px}
+.js .sticky{transform:translateY(110%);transition:transform .25s ease}
+.js .sticky.on{transform:none}
 
 @media(min-width:520px){
   .ctas{grid-template-columns:auto auto;justify-content:start}
@@ -137,7 +141,7 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
   .sec{padding:54px 0}
   .qa-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.js .sticky{transition:none}}
 </style>
 </head>
 <body>
@@ -153,11 +157,13 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Piles Treatment in Mangalore, Including LASER Options</h1>
-      <p class="lead"><b>Piles are common. You do not have to suffer in silence.</b>A careful examination, a clear plan, and surgery only when truly needed.</p>
+      <p class="eyebrow">Piles treatment in Mangalore</p>
+      <h1>Piles, handled with discretion and care.</h1>
+      <p class="lead"><b>Common, personal, and nothing to be embarrassed about.</b>A careful examination, a clear plan, and surgery only when truly needed.</p>
       <div class="ctas"><a class="btn btn-primary" href="tel:+918105232787" data-conv="call" data-loc="hero"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>Call +91 81052 32787</span></a><a class="btn btn-ghost" href="https://wa.me/918105232787?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20piles." target="_blank" rel="noopener" data-conv="whatsapp" data-loc="hero"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.5 13.4L3.2 20.8l4.3-1.2A8.8 8.8 0 1 0 12 3.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.6c.2-.4.5-.4.8-.4.2 0 .4.2.5.4l.6 1.3c.1.2 0 .4-.1.6l-.5.6c.7 1.3 1.6 2.1 2.9 2.8l.6-.6c.2-.2.4-.2.6-.1l1.3.6c.2.1.4.3.4.5 0 .5-.4 1.2-1.1 1.4-.7.2-2.1.1-3.9-1.2-1.8-1.3-2.9-3-3.1-4.1-.1-.6.1-1.3.5-1.8Z" fill="currentColor"/></svg><span>WhatsApp Us</span></a></div>
       <p class="micro">
         <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M7.6 12.3l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Private, respectful consultations by appointment</span>
+        <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M7.6 12.3l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>LASER treatment options for suitable cases</span>
         <span class="m-sched"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg>Mon to Fri Mangalore, Sat Puttur, Sun Ayyanakatte</span>
       </p>
     </div>
@@ -226,6 +232,17 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
   <a class="btn btn-primary" href="tel:+918105232787" data-conv="call" data-loc="sticky"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>Call Now</span></a>
   <a class="btn btn-ghost" href="https://wa.me/918105232787?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20piles." target="_blank" rel="noopener" data-conv="whatsapp" data-loc="sticky"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.5 13.4L3.2 20.8l4.3-1.2A8.8 8.8 0 1 0 12 3.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.6c.2-.4.5-.4.8-.4.2 0 .4.2.5.4l.6 1.3c.1.2 0 .4-.1.6l-.5.6c.7 1.3 1.6 2.1 2.9 2.8l.6-.6c.2-.2.4-.2.6-.1l1.3.6c.2.1.4.3.4.5 0 .5-.4 1.2-1.1 1.4-.7.2-2.1.1-3.9-1.2-1.8-1.3-2.9-3-3.1-4.1-.1-.6.1-1.3.5-1.8Z" fill="currentColor"/></svg><span>WhatsApp</span></a>
 </div>
+<script>
+(function () {
+  var bar = document.querySelector('.sticky'), cta = document.querySelector('.hero .ctas');
+  if (!bar || !cta || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js');
+  new IntersectionObserver(function (entries) {
+    var en = entries[0];
+    bar.classList.toggle('on', !en.isIntersecting && en.boundingClientRect.top < 0);
+  }, { threshold: 0 }).observe(cta);
+})();
+</script>
 <script src="/lp-track.js" defer></script>
 </body>
 </html>

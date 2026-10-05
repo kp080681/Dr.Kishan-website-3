@@ -83,10 +83,12 @@ PAGES = {
         "file": "piles.html",
         "title": f"Piles Treatment in Mangalore | LASER Options | {CLINIC}",
         "meta": "Piles treatment in Mangalore, including LASER options. A careful examination, a clear plan, and surgery only when it is truly needed. Call or WhatsApp to book.",
-        "h1": "Piles Treatment in Mangalore, Including LASER Options",
-        "lead1": "Piles are common. You do not have to suffer in silence.",
+        "eyebrow": "Piles treatment in Mangalore",
+        "h1": "Piles, handled with discretion and care.",
+        "lead1": "Common, personal, and nothing to be embarrassed about.",
         "lead2": "A careful examination, a clear plan, and surgery only when truly needed.",
         "lead2_standard": f"Meet {DOCTOR} for a careful examination, a clear plan, and surgery only when truly needed.",
+        "micro_laser": "LASER treatment options for suitable cases",
         "wa": "Hello, I would like to book a consultation for piles.",
         "familiar": [
             "Bleeding during bowel movements",
@@ -146,7 +148,9 @@ ul{list-style:none}
 /* hero */
 .hero{background:linear-gradient(180deg,var(--ivory-50) 0%,var(--ivory-100) 100%);padding:26px 0 34px}
 .hero-grid{display:grid;gap:24px}
-.hero h1{font-size:clamp(31px,7.6vw,50px);letter-spacing:-.018em}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:14.5px;font-weight:600;color:var(--brass-600);letter-spacing:.01em}
+.eyebrow::before{content:"";width:28px;height:1.5px;background:var(--brass-500);flex:none}
+.hero h1{font-size:clamp(34px,9vw,58px);letter-spacing:-.02em;line-height:1.08}
 .lead{margin-top:14px;font-size:clamp(18px,2.4vw,20px);color:#27342f;max-width:32em}
 .lead b{display:block;color:var(--navy-950);font-weight:600;margin-bottom:4px}
 .hero .ctas{margin-top:22px}
@@ -215,6 +219,8 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
 /* sticky bar, phones only */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(238,231,214,.97);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid rgba(11,46,41,.16)}
 .sticky .btn{flex:1;min-height:52px;padding:0 10px;font-size:16.5px}
+.js .sticky{transform:translateY(110%);transition:transform .25s ease}
+.js .sticky.on{transform:none}
 
 @media(min-width:520px){
   .ctas{grid-template-columns:auto auto;justify-content:start}
@@ -241,7 +247,7 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
   .sec{padding:54px 0}
   .qa-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.js .sticky{transition:none}}
 """
 
 BASE = Template("""<!DOCTYPE html>
@@ -262,6 +268,17 @@ BASE = Template("""<!DOCTYPE html>
 </head>
 <body>
 ${body}
+<script>
+(function () {
+  var bar = document.querySelector('.sticky'), cta = document.querySelector('.hero .ctas');
+  if (!bar || !cta || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js');
+  new IntersectionObserver(function (entries) {
+    var en = entries[0];
+    bar.classList.toggle('on', !en.isIntersecting && en.boundingClientRect.top < 0);
+  }, { threshold: 0 }).observe(cta);
+})();
+</script>
 <script src="/lp-track.js" defer></script>
 </body>
 </html>
@@ -323,11 +340,13 @@ def hero(p, version):
     return f"""<section class="hero">
   <div class="wrap hero-grid">
     <div>
+      <p class="eyebrow">{e(p["eyebrow"])}</p>
       <h1>{e(p["h1"])}</h1>
       <p class="lead"><b>{e(p["lead1"])}</b>{e(lead2)}</p>
       {cta_pair(p, "hero")}
       <p class="micro">
         <span>{ICON_CHECK}Private, respectful consultations by appointment</span>
+        <span>{ICON_CHECK}{e(p["micro_laser"])}</span>
         <span class="m-sched">{ICON_PIN}Mon to Fri Mangalore, Sat Puttur, Sun Ayyanakatte</span>
       </p>
     </div>
