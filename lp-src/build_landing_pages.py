@@ -2,6 +2,11 @@
 """
 Builds the Google Ads landing pages from one template.
 
+Design rule: the page has one job, a tap on Call or WhatsApp.
+Everything above the fold is the keyword, one human line and two buttons.
+Explanations live in collapsed questions, so they stay on the page for
+Google and for patients who want depth, but nobody is forced to read them.
+
 Usage (from the repo root):
     python3 lp-src/build_landing_pages.py                 # Conservative, all pages
     python3 lp-src/build_landing_pages.py standard        # Standard version
@@ -9,7 +14,6 @@ Usage (from the repo root):
 
 Output: piles.html, fistula.html, varicose-veins.html in the repo root.
 Vercel serves them at /piles, /fistula and /varicose-veins.
-The copy is the copy in the approval document. Change it here, then rebuild.
 """
 import sys
 import html
@@ -54,24 +58,18 @@ LOCATIONS = [
     },
 ]
 
-COMMON_FAQS = [
-    ("How do I book an appointment?",
-     f"Call {PHONE_DISPLAY} or send a WhatsApp message. We will confirm your day, time and location."),
-    ("What should I bring?",
-     "Any earlier reports, scans and prescriptions, along with a list of the medicines you take."),
-    ("Is LASER treatment right for everyone?",
-     "No. Suitability depends on your examination and, where needed, tests. You will be told plainly whether LASER or another approach fits your case."),
-    ("What will it cost?",
-     "Cost depends on your condition, the treatment advised and the hospital. After your assessment you will be guided on what to expect before you decide anything."),
-]
+# Shared answers, used on every page
+QA_LASER = ("Is LASER treatment right for everyone?",
+            "No. Suitability depends on your examination and, where needed, tests. You will be told plainly whether LASER or another approach fits your case.")
+QA_COST = ("What will it cost?",
+           "Cost depends on your condition, the treatment advised and the hospital. After your assessment you will be guided on what to expect before you decide anything.")
+QA_BOOK = ("How do I book, and what should I bring?",
+           f"Call {PHONE_DISPLAY} or send a WhatsApp message, and we will confirm your day, time and location. Bring any earlier reports, scans and prescriptions, and a list of the medicines you take.")
 
 STEPS = [
-    ("A careful examination",
-     "You are heard first, then examined with respect for your privacy. If needed, tests are advised to rule out other causes."),
-    ("A clear explanation",
-     "You are told what the problem is, what your options are and what each one involves, in plain language."),
-    ("A plan that fits you",
-     "Simple measures and medicines where they are enough. A procedure or surgery only when it is genuinely needed, with follow-up afterwards."),
+    ("Careful examination", "Heard first, examined with respect for your privacy."),
+    ("Clear explanation", "Your options, in plain language."),
+    ("A plan that fits you", "Surgery only when it is genuinely needed."),
 ]
 
 DISCLAIMER = ("The information on this page is for general education and appointment guidance only. "
@@ -83,12 +81,12 @@ DISCLAIMER = ("The information on this page is for general education and appoint
 PAGES = {
     "piles": {
         "file": "piles.html",
-        "label": "piles",
         "title": f"Piles Treatment in Mangalore | LASER Options | {CLINIC}",
         "meta": "Piles treatment in Mangalore, including LASER options. A careful examination, a clear plan, and surgery only when it is truly needed. Call or WhatsApp to book.",
         "h1": "Piles Treatment in Mangalore, Including LASER Options",
-        "sub": f"Piles are common, and you do not have to suffer in silence. Visit {CLINIC} for a careful examination and a clear plan, with surgery only when it is truly needed.",
-        "sub_standard": f"Piles are common, and you do not have to suffer in silence. Meet {DOCTOR} for a careful examination and a clear plan, with surgery only when it is truly needed.",
+        "lead1": "Piles are common. You do not have to suffer in silence.",
+        "lead2": "A careful examination, a clear plan, and surgery only when truly needed.",
+        "lead2_standard": f"Meet {DOCTOR} for a careful examination, a clear plan, and surgery only when truly needed.",
         "wa": "Hello, I would like to book a consultation for piles.",
         "familiar": [
             "Bleeding during bowel movements",
@@ -96,26 +94,18 @@ PAGES = {
             "A swelling or lump near the anus",
             "Tissue that comes out during a bowel movement",
         ],
-        "familiar_note": "Not every case of bleeding is piles. Only a proper examination can tell you what is really going on.",
-        "understand_title": "Understanding piles",
-        "understand": [
-            ("What it is", "Piles are swollen blood vessels around the anus or lower rectum. They are common, and can range from mild irritation to bleeding, swelling or prolapse."),
-            ("What can contribute", "Constipation, straining, sitting for long periods on the toilet, a low-fibre diet, pregnancy, obesity and repeated pressure during bowel movements can all contribute."),
-        ],
-        "options_title": "Treatment options for piles",
-        "options": [
-            ("To begin with", "Early piles are often managed with fibre, fluids, stool-softening measures and medicines."),
-            ("If symptoms continue", "When symptoms persist, prolapse is significant or bleeding keeps returning, a procedure or surgery may be considered."),
-            ("LASER options", "LASER-based treatment is one of the options offered for suitable cases, and you will be told honestly whether it is right for you."),
-        ],
-        "faq_title": "Questions about piles",
-        "faqs": [
+        "note": "Not every case of bleeding is piles. Only a proper examination can tell you what is really going on.",
+        "laser": "LASER-based treatment is one of the options offered for suitable cases, and you will be told honestly whether it is right for you.",
+        "qa": [
+            ("What are piles?",
+             "Piles are swollen blood vessels around the anus or lower rectum. They are common, and can range from mild irritation to bleeding, swelling or prolapse."),
+            ("What can contribute to piles?",
+             "Constipation, straining, sitting for long periods on the toilet, a low-fibre diet, pregnancy, obesity and repeated pressure during bowel movements can all contribute."),
+            ("What are the treatment options?",
+             "Early piles are often managed with fibre, fluids, stool-softening measures and medicines. When symptoms persist, prolapse is significant or bleeding keeps returning, a procedure or surgery may be considered."),
             ("Do I need surgery for piles?",
              "Not always. Many people are first advised simple measures and medicines. Surgery is recommended only when it is genuinely indicated, and you will be told why."),
-            ("Is bleeding always a sign of piles?",
-             "No. Bleeding can have other causes, which is why an examination matters. Depending on your age and symptoms, tests may be advised to rule out other causes."),
-            ("How are piles diagnosed?",
-             "Through a careful history and a local examination. In some cases, further tests such as proctoscopy, sigmoidoscopy or colonoscopy may be advised."),
+            QA_LASER, QA_COST, QA_BOOK,
         ],
     },
 }
@@ -130,7 +120,7 @@ CSS = r"""
 :root{--navy-950:#0B2E29;--navy-900:#123B34;--navy-800:#1A4740;--ivory-50:#EEE7D6;--ivory-100:#E6DCC3;--paper:#F6F1E4;--brass-500:#B08A3E;--brass-600:#8F6F2E;--ink:#182420;--ivory-text:#F3EEDD;--line:rgba(20,33,31,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--ivory-50);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;padding-bottom:86px}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--ivory-50);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;padding-bottom:86px}
 h1,h2,h3{font-family:'Inter Tight','Inter',system-ui,sans-serif;font-weight:650;color:var(--navy-950);letter-spacing:-.012em;line-height:1.15}
 ul{list-style:none}
 .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
@@ -141,27 +131,30 @@ ul{list-style:none}
 .btn-primary:hover{background:var(--navy-800)}
 .btn-ghost{background:transparent;color:var(--navy-950)}
 .btn-ghost:hover{background:rgba(11,46,41,.07)}
+.ctas{display:grid;gap:12px}
 
 /* header */
 .top{background:var(--ivory-50);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:70px;padding-top:10px;padding-bottom:10px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding-top:9px;padding-bottom:9px}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
-.brand img{width:44px;height:46px;flex:none;display:block}
+.brand img{width:42px;height:44px;flex:none;display:block}
 .brand b{display:block;font:650 17px/1.15 'Inter Tight',system-ui,sans-serif;color:var(--navy-950)}
 .brand span{display:block;font-size:12.5px;color:var(--brass-600);margin-top:3px;line-height:1.3}
 .top .btn{display:none;min-height:46px;padding:0 18px;font-size:15.5px}
 .top .btn svg{width:18px;height:18px}
 
 /* hero */
-.hero{background:linear-gradient(180deg,var(--ivory-50) 0%,var(--ivory-100) 100%);padding:34px 0 42px}
-.hero-grid{display:grid;gap:28px}
+.hero{background:linear-gradient(180deg,var(--ivory-50) 0%,var(--ivory-100) 100%);padding:26px 0 34px}
+.hero-grid{display:grid;gap:24px}
 .hero h1{font-size:clamp(31px,7.6vw,50px);letter-spacing:-.018em}
-.lead{margin-top:16px;font-size:clamp(17.5px,2.4vw,20px);color:#27342f;max-width:34em}
-.ctas{display:grid;gap:12px;margin-top:26px}
-.chips{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:24px;font-size:15px;color:var(--navy-800);font-weight:500}
-.chips li{display:flex;align-items:center;gap:8px}
-.chips svg{width:19px;height:19px;color:var(--brass-600);flex:none}
+.lead{margin-top:14px;font-size:clamp(18px,2.4vw,20px);color:#27342f;max-width:32em}
+.lead b{display:block;color:var(--navy-950);font-weight:600;margin-bottom:4px}
+.hero .ctas{margin-top:22px}
+.micro{margin-top:16px;display:grid;gap:7px;font-size:14.5px;color:var(--navy-800);font-weight:500}
+.micro span{display:flex;align-items:center;gap:8px}
+.micro svg{width:18px;height:18px;color:var(--brass-600);flex:none}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+.sched{display:none}
 .sched h2{font-size:20px}
 .sched ul{margin-top:12px}
 .sched li{padding:13px 0;border-top:1px solid var(--line);display:grid;gap:2px}
@@ -171,56 +164,52 @@ ul{list-style:none}
 .sched p{margin-top:8px;font-size:14.5px;color:#4a5651}
 
 /* sections */
-.sec{padding:50px 0}
+.sec{padding:36px 0}
 .sec.alt{background:var(--paper)}
-.sec h2{font-size:clamp(26px,4.8vw,36px)}
-.prose p{margin-top:14px;max-width:44em;font-size:18px}
-.center{text-align:center}
-.center p{margin-left:auto;margin-right:auto}
-.center .meet{margin-left:auto;margin-right:auto}
-.two,.three{display:grid;gap:14px;margin-top:24px}
-.tcard,.opt{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 22px}
-.tcard h3,.opt h3{font-size:19px;color:var(--brass-600)}
-.tcard p,.opt p{margin-top:10px;font-size:17.5px;color:#27342f}
-.opt.laser{background:#FBF6E6;border-color:var(--brass-500);border-top:3px solid var(--brass-500)}
-.opt.laser h3{color:var(--navy-950)}
-.tick-list{display:grid;gap:12px;margin-top:24px}
-.tick-list li{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;font-weight:500}
-.tick-list svg{width:23px;height:23px;flex:none;color:var(--brass-600);margin-top:1px}
-.note{margin-top:24px;border-left:3px solid var(--brass-500);padding:4px 0 4px 16px;font-size:18.5px;color:var(--navy-900);max-width:40em}
-.steps{display:grid;gap:14px;margin-top:26px}
-.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 20px}
-.step .n{font:650 36px/1 'Inter Tight',sans-serif;color:var(--brass-500)}
-.step h3{font-size:20px;margin-top:10px}
-.step p{margin-top:8px;font-size:16.5px;color:#34413c}
-.band{background:var(--ivory-100);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:38px 0;text-align:center}
-.band h2{font-size:clamp(24px,4.4vw,32px)}
-.band p{margin:10px auto 0;max-width:34em;font-size:18px;color:#2f3c37}
-.band .ctas{max-width:460px;margin:22px auto 0}
-.locs{display:grid;gap:14px;margin-top:26px}
-.loc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:flex;flex-direction:column;gap:4px}
-.loc h3{font-size:19px}
-.loc .where{color:var(--brass-600);font-size:15px;font-weight:500}
-.loc .when{margin-top:10px;font-weight:600;color:var(--navy-950)}
-.loc .time{color:#3a4742;font-size:16px}
-.loc a{margin-top:14px;display:inline-flex;align-items:center;gap:7px;color:var(--navy-950);font-weight:600;font-size:15.5px;text-decoration:none;border-bottom:1.5px solid var(--brass-500);align-self:flex-start;padding-bottom:2px}
-.loc a svg{width:18px;height:18px;color:var(--brass-600)}
-.fine{margin-top:18px;font-size:15px;color:#4a5651}
-.faq-group{margin-top:26px}
-.faq-group h3{font-size:20px;margin-bottom:6px}
+.sec h2{font-size:clamp(25px,4.8vw,34px)}
+.tick-list{display:grid;gap:8px;margin-top:18px}
+.tick-list li{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-weight:500;font-size:16.5px}
+.tick-list svg{width:22px;height:22px;flex:none;color:var(--brass-600)}
+.note{margin-top:18px;border-left:3px solid var(--brass-500);padding:3px 0 3px 14px;font-size:17.5px;color:var(--navy-900);max-width:38em}
+.sec .ctas{margin-top:22px}
+.steps{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;display:grid}
+.step{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-top:1px solid var(--line)}
+.step:first-child{border-top:0}
+.step .n{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--brass-500);color:var(--brass-600);font:650 17px/31px 'Inter Tight',sans-serif;text-align:center}
+.step h3{font-size:18px}
+.step p{margin-top:2px;font-size:16px;color:#34413c}
+.strip{margin-top:14px;background:#FBF6E6;border:1px solid var(--brass-500);border-left-width:4px;border-radius:10px;padding:16px 18px;font-size:16.5px}
+.strip b{color:var(--navy-950);font-weight:650}
+.meet{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.meet h3{font-size:19px}
+.meet .cred{margin-top:4px;color:var(--brass-600);font-weight:600;font-size:15.5px}
+.meet p{margin-top:8px;font-size:16.5px}
+.where{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.row{padding:15px 18px;border-top:1px solid var(--line);display:grid;gap:8px}
+.row:first-child{border-top:0}
+.row b{font:650 17.5px/1.25 'Inter Tight',sans-serif;color:var(--navy-950)}
+.row .sub{color:var(--brass-600);font-size:14.5px;font-weight:500;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;font-size:15.5px;color:#34413c}
+.meta strong{color:var(--navy-950);font-weight:600}
+.meta a{display:inline-flex;align-items:center;gap:6px;color:var(--navy-950);font-weight:600;font-size:15px;text-decoration:none;border-bottom:1.5px solid var(--brass-500);padding-bottom:1px}
+.meta a svg{width:17px;height:17px;color:var(--brass-600)}
+.fine{margin-top:12px;font-size:14.5px;color:#4a5651}
+.qa{margin-top:14px}
 details{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font:600 17.5px/1.35 'Inter',sans-serif;color:var(--navy-950);position:relative}
+summary{list-style:none;cursor:pointer;padding:16px 38px 16px 0;font:600 17px/1.35 'Inter',sans-serif;color:var(--navy-950);position:relative}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font:400 28px/1 'Inter',sans-serif;color:var(--brass-600)}
+summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font:400 27px/1 'Inter',sans-serif;color:var(--brass-600)}
 details[open] summary::after{content:"\2212"}
-details p{padding:0 8px 20px 0;font-size:17px;color:#30403a;max-width:46em}
-.meet{margin-top:18px;max-width:46em}
-.meet .cred{margin-top:8px;color:var(--brass-600);font-weight:600}
+details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
+.band{background:var(--ivory-100);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;text-align:center}
+.band h2{font-size:clamp(25px,4.6vw,32px)}
+.band p{margin:8px auto 0;max-width:30em;font-size:17.5px;color:#2f3c37}
+.band .ctas{max-width:460px;margin:20px auto 0}
 
 /* footer */
-.foot{padding:34px 0 28px;font-size:14px;color:#4a5651}
+.foot{padding:26px 0 22px;font-size:13.5px;color:#4a5651}
 .foot p{max-width:56em}
-.foot .row{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.foot .row2{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 18px}
 .foot a{color:var(--navy-950);text-underline-offset:3px}
 
 /* sticky bar, phones only */
@@ -233,21 +222,24 @@ details p{padding:0 8px 20px 0;font-size:17px;color:#30403a;max-width:46em}
 }
 @media(min-width:700px){
   .top .btn{display:inline-flex}
-  .two{grid-template-columns:1fr 1fr}
   .tick-list{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:repeat(3,1fr)}
-  .locs{grid-template-columns:repeat(3,1fr)}
+  .step{border-top:0;border-left:1px solid var(--line)}
+  .step:first-child{border-left:0}
+  .row{grid-template-columns:1.4fr 1.6fr;align-items:center;gap:6px 24px}
+  .meta{justify-content:space-between}
 }
 @media(min-width:900px){
   body{font-size:18px;padding-bottom:0}
   .sticky{display:none}
   .top{position:sticky;top:0;z-index:40}
-  .top .wrap{min-height:76px}
-  .hero{padding:58px 0 66px}
+  .top .wrap{min-height:74px}
+  .hero{padding:52px 0 60px}
   .hero-grid{grid-template-columns:1.22fr .78fr;align-items:center;gap:56px}
-  .sec{padding:68px 0}
-  .three{grid-template-columns:repeat(3,1fr)}
-  .faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .sched{display:block}
+  .m-sched{display:none!important}
+  .sec{padding:54px 0}
+  .qa-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 """
@@ -295,6 +287,10 @@ def wa_btn(loc, wa_text, primary=False, label="WhatsApp Us"):
     return f'<a class="{cls}" href="{e(wa_url(wa_text))}" target="_blank" rel="noopener" data-conv="whatsapp" data-loc="{loc}">{ICON_WA}<span>{e(label)}</span></a>'
 
 
+def cta_pair(p, loc):
+    return f'<div class="ctas">{call_btn(loc, True)}{wa_btn(loc, p["wa"])}</div>'
+
+
 def header(version):
     if version == "standard":
         name, sub = DOCTOR, SPECIALTY
@@ -303,7 +299,7 @@ def header(version):
     return f"""<header class="top">
   <div class="wrap">
     <a class="brand" href="/" aria-label="{e(name)}">
-      <img src="/images/brand/logo-lp.png" alt="" width="44" height="46">
+      <img src="/images/brand/logo-lp.png" alt="" width="42" height="44">
       <div><b>{e(name)}</b><span>{e(sub)}</span></div>
     </a>
     {call_btn("header", True, "Call Now")}
@@ -323,19 +319,17 @@ def schedule_card():
 
 
 def hero(p, version):
-    sub = p["sub_standard"] if version == "standard" else p["sub"]
-    chips = ["By appointment", "Mangalore, Puttur and Sullia", "Surgery only when truly needed"]
-    chip_html = "".join(f"<li>{ICON_CHECK}<span>{e(c)}</span></li>" for c in chips)
+    lead2 = p["lead2_standard"] if version == "standard" else p["lead2"]
     return f"""<section class="hero">
   <div class="wrap hero-grid">
     <div>
       <h1>{e(p["h1"])}</h1>
-      <p class="lead">{e(sub)}</p>
-      <div class="ctas">
-        {call_btn("hero", True)}
-        {wa_btn("hero", p["wa"])}
-      </div>
-      <ul class="chips">{chip_html}</ul>
+      <p class="lead"><b>{e(p["lead1"])}</b>{e(lead2)}</p>
+      {cta_pair(p, "hero")}
+      <p class="micro">
+        <span>{ICON_CHECK}Private, respectful consultations by appointment</span>
+        <span class="m-sched">{ICON_PIN}Mon to Fri Mangalore, Sat Puttur, Sun Ayyanakatte</span>
+      </p>
     </div>
     {schedule_card()}
   </div>
@@ -348,114 +342,84 @@ def familiar(p):
   <div class="wrap">
     <h2>Does this sound familiar?</h2>
     <ul class="tick-list">{items}</ul>
-    <p class="note">{e(p["familiar_note"])}</p>
+    <p class="note">{e(p["note"])}</p>
+    {cta_pair(p, "mid")}
   </div>
 </section>"""
 
 
-def understand(p):
+def visit(p, version):
     cards = "".join(
-        f'<div class="tcard"><h3>{e(lab)}</h3><p>{e(txt)}</p></div>' for lab, txt in p["understand"]
-    )
-    return f"""<section class="sec">
-  <div class="wrap">
-    <h2>{e(p["understand_title"])}</h2>
-    <div class="two">{cards}</div>
-  </div>
-</section>"""
-
-
-def steps():
-    cards = "".join(
-        f'<div class="step"><div class="n">{i}</div><h3>{e(t)}</h3><p>{e(d)}</p></div>'
+        f'<div class="step"><div class="n">{i}</div><div><h3>{e(t)}</h3><p>{e(d)}</p></div></div>'
         for i, (t, d) in enumerate(STEPS, 1)
     )
-    return f"""<section class="sec alt">
-  <div class="wrap">
-    <h2>How your consultation works</h2>
-    <div class="steps">{cards}</div>
-  </div>
-</section>"""
-
-
-def options(p):
-    cards = []
-    for i, (lab, txt) in enumerate(p["options"]):
-        cls = "opt laser" if i == len(p["options"]) - 1 else "opt"
-        cards.append(f'<div class="{cls}"><h3>{e(lab)}</h3><p>{e(txt)}</p></div>')
+    meet = ""
+    if version == "standard":
+        meet = f"""<div class="meet">
+      <h3>{e(DOCTOR)}</h3>
+      <div class="cred">{e(SPECIALTY)}. MBBS (BMC), MS (Gold Medalist), FMAS, DMAS</div>
+      <p>{e(DOCTOR)} explains every option clearly and recommends surgery only when it is genuinely indicated.</p>
+    </div>"""
     return f"""<section class="sec">
   <div class="wrap">
-    <h2>{e(p["options_title"])}</h2>
-    <div class="three">{"".join(cards)}</div>
+    <h2>What happens at your visit</h2>
+    <div class="steps">{cards}</div>
+    <div class="strip"><b>LASER options.</b> {e(p["laser"])}</div>
+    {meet}
   </div>
 </section>"""
 
 
-def band(p, loc, title, text):
-    return f"""<section class="band">
-  <div class="wrap">
-    <h2>{e(title)}</h2>
-    <p>{e(text)}</p>
-    <div class="ctas">
-      {call_btn(loc, True)}
-      {wa_btn(loc, p["wa"])}
-    </div>
-  </div>
-</section>"""
-
-
-def about(version):
-    if version == "standard":
-        return f"""<section class="sec alt">
-  <div class="wrap prose center">
-    <h2>Meet your surgeon</h2>
-    <div class="meet">
-      <h3>{e(DOCTOR)}</h3>
-      <p class="cred">{e(SPECIALTY)}<br>MBBS (BMC), MS (Gold Medalist), FMAS, DMAS</p>
-      <p>{e(DOCTOR)} treats a wide range of general, laparoscopic and LASER surgical conditions in Mangalore. He explains every option clearly and recommends surgery only when it is genuinely indicated.</p>
-    </div>
-  </div>
-</section>"""
-    return f"""<section class="sec alt">
-  <div class="wrap prose center">
-    <h2>About the clinic</h2>
-    <p>{e(CLINIC)} sees patients by appointment at three locations across Mangalore, Puttur and Sullia. Every visit begins with a careful assessment, and every recommendation comes with a clear explanation.</p>
-  </div>
-</section>"""
-
-
-def locations():
-    cards = "".join(
-        f"""<div class="loc">
-      <h3>{e(l["name"])}</h3>
-      <div class="where">{e(l["where"])}</div>
-      <div class="when">{e(l["day"])}</div>
-      <div class="time">{e(l["time"])}</div>
-      <a href="{e(l["map"])}" target="_blank" rel="noopener">{ICON_PIN}<span>Get Directions</span></a>
+def where():
+    rows = "".join(
+        f"""<div class="row">
+      <div><b>{e(l["name"])}</b><div class="sub">{e(l["where"])}</div></div>
+      <div class="meta"><span><strong>{e(l["day"])}</strong>, {e(l["time"])}</span><a href="{e(l["map"])}" target="_blank" rel="noopener">{ICON_PIN}<span>Directions</span></a></div>
     </div>"""
         for l in LOCATIONS
     )
-    return f"""<section class="sec">
+    return f"""<section class="sec alt">
   <div class="wrap">
     <h2>Where and when</h2>
-    <div class="locs">{cards}</div>
-    <p class="fine">Timings can change, so please call or WhatsApp to confirm before you visit.</p>
+    <div class="where">{rows}</div>
+    <p class="fine">Consultations are by appointment. Timings can change, so please call or WhatsApp to confirm before you visit.</p>
   </div>
 </section>"""
 
 
-def faq(p):
+def questions(p):
     def block(items):
         return "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in items)
-    return f"""<section class="sec alt">
+    qa = p["qa"]
+    half = (len(qa) + 1) // 2
+    return f"""<section class="sec">
   <div class="wrap">
-    <h2>Common questions</h2>
-    <div class="faq-cols">
-      <div class="faq-group"><h3>{e(p["faq_title"])}</h3>{block(p["faqs"])}</div>
-      <div class="faq-group"><h3>Booking and visits</h3>{block(COMMON_FAQS)}</div>
+    <h2>Questions you may have</h2>
+    <div class="qa qa-cols">
+      <div>{block(qa[:half])}</div>
+      <div>{block(qa[half:])}</div>
     </div>
   </div>
 </section>"""
+
+
+def closing(p):
+    return f"""<section class="band">
+  <div class="wrap">
+    <h2>Take the first step today</h2>
+    <p>One call or one WhatsApp message is all it takes.</p>
+    {cta_pair(p, "close")}
+  </div>
+</section>"""
+
+
+def footer():
+    return f"""<footer class="foot">
+  <div class="wrap">
+    <p>{e(DISCLAIMER)}</p>
+    <div class="row2"><span>&copy; {e(CLINIC)}</span><a href="/">Main website</a></div>
+  </div>
+</footer>"""
 
 
 def sticky(p):
@@ -471,21 +435,11 @@ def build(key, version):
         header(version),
         hero(p, version),
         familiar(p),
-        understand(p),
-        steps(),
-        options(p),
-        band(p, "mid", "Ready to talk?", "One call or one WhatsApp message is all it takes to book."),
-        about(version),
-        locations(),
-        faq(p),
-        band(p, "close", "Take the first step today",
-             "One call or one WhatsApp message is all it takes. You will be examined carefully, your options explained clearly, and surgery advised only when it is truly needed."),
-        f"""<footer class="foot">
-  <div class="wrap">
-    <p>{e(DISCLAIMER)}</p>
-    <div class="row"><span>&copy; {e(CLINIC)}</span><a href="/">Main website</a></div>
-  </div>
-</footer>""",
+        visit(p, version),
+        where(),
+        questions(p),
+        closing(p),
+        footer(),
         sticky(p),
     ])
     out = BASE.substitute(title=e(p["title"]), meta=e(p["meta"]), css=CSS, body=body)
@@ -494,7 +448,7 @@ def build(key, version):
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:]]
+    args = list(sys.argv[1:])
     version = "conservative"
     if args and args[0] in ("conservative", "standard"):
         version = args.pop(0)
