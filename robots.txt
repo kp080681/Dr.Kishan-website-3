@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dr-kishan-website-3.vercel.app/sitemap.xml
+Sitemap: https://surgeonkishan.com/sitemap.xml
