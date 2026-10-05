@@ -5,5 +5,15 @@
     { "source": "/blog", "destination": "/#blogs", "permanent": true },
     { "source": "/blog/:path*", "destination": "/#blogs", "permanent": true },
     { "source": "/Kannada", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/preview-f43d592f/:path*",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/preview-f43d592f",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
   ]
 }
