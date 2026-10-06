@@ -139,9 +139,9 @@
     max-height:920px;
   }
   .hero-media img{
-    width:100%; height:100%;
+    width:60%; height:100%; margin-left:auto;
     object-fit:cover;
-    object-position:65% 8%;
+    object-position:50% 4%;
     animation:slowZoom 20s ease-out forwards;
 
     /* feather the left + bottom edges so the photo dissolves into the page
@@ -269,13 +269,14 @@
     .hero{ min-height:auto; max-height:none; display:block; }
     .hero-media{ height:56vh; min-height:380px; max-height:600px; }
     .hero-media img{
-      object-position:68% 5%;
+      width:100%; margin-left:0;
+      object-position:50% 0%;
       -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
       -webkit-mask-composite: source-in; mask-composite: intersect;
     }
     .hero-media::after{ background:linear-gradient(to bottom, transparent 55%, var(--navy-950) 100%); opacity:0.10; }
-    .hero-copy{ position:static; padding:0 24px 40px; margin-top:-56px; }
+    .hero-copy{ position:static; padding:28px 24px 40px; margin-top:0; background:var(--ivory-50); }
     .hero-copy-inner{ max-width:none; }
     .stats-bar{ grid-template-columns:repeat(3, 1fr); padding:6px 24px 40px; row-gap:24px; gap:12px; }
     .header-inner{ padding:0 20px; }
@@ -284,6 +285,21 @@
   @media (max-width: 420px){
     .hero-name{ font-size:clamp(26px, 8vw, 34px); }
     .brand-tag{ display:none; }
+  }
+  /* small phones: keep logo, name, Book button and menu all on screen */
+  @media (max-width: 480px){
+    .header-inner{ padding:0 14px; gap:10px; }
+    .brand{ gap:8px; min-width:0; }
+    .brand-mark{ height:48px; }
+    .brand-tag{ display:none; }
+    .brand-name{ font-size:16px; }
+    .header-cta{ padding:9px 14px; font-size:12.5px; margin-left:auto; }
+    .nav-toggle{ padding:4px; flex-shrink:0; }
+  }
+  @media (max-width: 400px){
+    .hero-credentials{ font-size:13.5px; letter-spacing:0; }
+    .brand-name{ font-size:15px; }
+    .cta-long{ display:none; }
   }
 
 
@@ -417,6 +433,7 @@
     .clinic-name{ font-size:16px; }
     .clinic-directions{ flex-basis:100%; }
     .tx-group{ grid-template-columns:1fr; gap:32px; }
+    .tx-group--general .tx-copy{ padding:0 20px; }
     .tx-media{ order:-1; aspect-ratio:16/10; }
     .media-frame.feather-left img, .media-frame.feather-right img{
       -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
@@ -628,6 +645,7 @@
     gap:4px;
   }
   .g-tile{ aspect-ratio:4/5; }
+  .g-tile--wide{ grid-column:span 2; aspect-ratio:8/5; }
 
   /* ---------------- BLOGS ---------------- */
   #blogs{ background:var(--ivory-50); }
@@ -728,7 +746,7 @@
       <a href="#faq">FAQ</a>
       <a href="#blogs">Blogs</a>
     </nav>
-    <a href="#consultation" class="header-cta">Book Consultation</a>
+    <a href="#consultation" class="header-cta">Book<span class="cta-long">&nbsp;Consultation</span></a>
     <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.toggle('open'); this.classList.toggle('open')">
       <svg viewBox="0 0 24 24" fill="none"><path class="nt-line nt-1" d="M4 7h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-line nt-2" d="M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-line nt-3" d="M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
@@ -785,13 +803,13 @@
     <h2>Where patients can consult <span style="white-space:nowrap;">Dr. Kishan Rao</span></h2>
     <div class="consult-grid">
       <div class="clinic-list">
-        <div class="clinic-row"><div class="clinic-mark">BN</div><div class="clinic-info"><div class="clinic-name">Dr. Kishan's Surgical Care</div><div class="clinic-location">Inside Bhat's Nursing Home, Mannagudda</div><div class="clinic-meta"><span>Monday to Friday</span><span>&middot;</span><span>10:00 AM&ndash;1:00 PM, 3:00 PM&ndash;6:00 PM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Bhat%27s%20Nursing%20Home%2C%20Mannagudda%2C%20Mangaluru%2C%20Karnataka" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">AJ</div><div class="clinic-info"><div class="clinic-name">AJ Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=NH-66%2C%20Kuntikana%2C%20Mangaluru%2C%20Karnataka%20575004" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">AH</div><div class="clinic-info"><div class="clinic-name">Adarsha Hospital, Puttur</div><div class="clinic-meta"><span>Saturday</span><span>&middot;</span><span>9:00 AM&ndash;11:00 AM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=APMC%20Road%2C%20Bolwar%2C%20Puttur%2C%20Karnataka%20574201" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">NA</div><div class="clinic-info"><div class="clinic-name">Namma Arogyadhama, Ayyanakatte</div><div class="clinic-meta"><span>Sunday</span><span>&middot;</span><span>9:00 AM&ndash;5:00 PM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Ayyanakatte%2C%20near%20Bellare%2C%20Sullia%20Taluk%2C%20Karnataka" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">SCS</div><div class="clinic-info"><div class="clinic-name">SCS Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Upper%20Bendoor%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">CH</div><div class="clinic-info"><div class="clinic-name">Colaco Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Bendoorwell%20Main%20Road%2C%20Bendoor%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Directions</a></div>
-        <div class="clinic-row"><div class="clinic-mark">YS</div><div class="clinic-info"><div class="clinic-name">Yenepoya Specialty Hospital</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Kodialbail%2C%20Mangaluru%2C%20Karnataka%20575003" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">BN</div><div class="clinic-info"><div class="clinic-name">Dr. Kishan's Surgical Care</div><div class="clinic-location">Inside Bhat's Nursing Home, Mannagudda</div><div class="clinic-meta"><span>Monday to Friday</span><span>&middot;</span><span>10:00 AM&ndash;1:00 PM, 3:00 PM&ndash;6:00 PM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Bhats%20Nursing%20Home&query_place_id=ChIJ-a3HTmdaozsRKxOzKzY2dvA" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">AJ</div><div class="clinic-info"><div class="clinic-name">AJ Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=A.J.%20Hospital%20%26%20Research%20Centre&query_place_id=ChIJu7cgLWhaozsRCa46UXIgNVY" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">AH</div><div class="clinic-info"><div class="clinic-name">Adarsha Hospital, Puttur</div><div class="clinic-meta"><span>Saturday</span><span>&middot;</span><span>9:00 AM&ndash;11:00 AM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Adarsha%20Hospital%20Puttur&query_place_id=ChIJe6nWb5u9pDsRcejp98em65o" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">NA</div><div class="clinic-info"><div class="clinic-name">Namma Arogyadhama, Ayyanakatte</div><div class="clinic-meta"><span>Sunday</span><span>&middot;</span><span>9:00 AM&ndash;5:00 PM</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Namma%20Arogyadhama%20Multispeciality%20Medical%20Centre%20Ayyanakatte&query_place_id=ChIJaW84ARTtpDsRGAdTR_R30yY" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">SCS</div><div class="clinic-info"><div class="clinic-name">SCS Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=S.C.S.%20Hospital%20Bendoor%20Mangaluru&query_place_id=ChIJ29rgITdaozsRP_iQ5iyYVgQ" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">CH</div><div class="clinic-info"><div class="clinic-name">Colaco Hospital, Mangaluru</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Colaco%20Hospital%20Bendoorwell%20Mangaluru&query_place_id=ChIJyaUHSzFaozsRTW649UfYJR8" target="_blank" rel="noopener">Directions</a></div>
+        <div class="clinic-row"><div class="clinic-mark">YS</div><div class="clinic-info"><div class="clinic-name">Yenepoya Specialty Hospital</div><div class="clinic-meta"><span>Confirm availability before visiting</span></div></div><a class="clinic-directions" href="https://www.google.com/maps/search/?api=1&query=Yenepoya%20Speciality%20Hospital%20Kodialbail%20Mangaluru&query_place_id=ChIJiZrpT05aozsRIGl86IvOcu0" target="_blank" rel="noopener">Directions</a></div>
       </div>
       <div class="consult-media media-frame reveal">
         <img src="images/consultation/consultation.jpg" alt="Dr. Kishan Rao consulting with a patient">
@@ -837,9 +855,9 @@
         </div>
       </div>
 
-      <div class="tx-group">
-        <div class="tx-media media-frame feather-left reveal" style="--face-y:15%">
-          <img src="images/treatments/general.jpg" alt="General surgical procedure">
+      <div class="tx-group tx-group--general">
+        <div class="tx-media media-frame feather-left reveal" style="--face-x:100%; --face-y:0%">
+          <img src="images/treatments/general.jpg" alt="Dr. Kishan Rao operating with a surgical colleague">
         </div>
         <div class="tx-copy">
           <h3>General</h3>
@@ -987,6 +1005,12 @@
     <div class="review-grid">
         <div class="review-card">
           <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
+          <p class="review-quote">&ldquo;We consulted Dr. Kishan for my father's laparoscopic hernia surgery. He is a very kind and understanding doctor who listens patiently to all concerns and explains everything clearly. He gave us proper guidance and the surgery was done very successfully. We are very happy with the treatment. Thank you so much&rdquo;</p>
+          <div class="review-name">Priyanka Manoharan</div>
+          <div class="review-source">5-star Google review</div>
+        </div>
+        <div class="review-card">
+          <svg class="review-quote-mark" viewBox="0 0 24 24" fill="none"><path d="M7 8C4.5 8 3 10 3 13C3 16 5 18 8 18M7 8C9 8 10 10 10 12M7 8V6M17 8C14.5 8 13 10 13 13C13 16 15 18 18 18M17 8C19 8 20 10 20 12M17 8V6" stroke="#8F6F2E" stroke-width="1.3"/></svg>
           <p class="review-quote">&ldquo;Dear Doctor....., I am writing to express my sincere gratitude for the care you provided to my child during his surgery. You explain everything in calm way. Your skill, patience and kindness created fearless environment. Because of your expertise and compassion, my child is recovering well and we are so relieved.&rdquo;</p>
           <div class="review-name">Shruthi gs</div>
           <div class="review-source">5-star Google review</div>
@@ -1076,8 +1100,8 @@
         <div class="g-tile media-frame reveal" style="--face-y:50%">
           <img src="images/gallery/or-team.jpg" alt="Dr. Kishan Rao">
         </div>
-        <div class="g-tile media-frame reveal" style="--face-y:15%">
-          <img src="images/gallery/felicitation-2.jpg" alt="Dr. Kishan Rao">
+        <div class="g-tile media-frame reveal" style="--face-x:50%; --face-y:20%">
+          <img src="images/gallery/felicitation-2.jpg" alt="Dr. Kishan Rao being felicitated on stage">
         </div>
         <div class="g-tile media-frame reveal" style="--face-y:5%">
           <img src="images/gallery/pediatric-patient.jpg" alt="Dr. Kishan Rao">
@@ -1091,14 +1115,26 @@
         <div class="g-tile media-frame reveal" style="--face-y:15%">
           <img src="images/gallery/medicine-gift.jpg" alt="Dr. Kishan Rao">
         </div>
-        <div class="g-tile media-frame reveal" style="--face-y:10%">
-          <img src="images/gallery/sketch-gift.jpg" alt="Dr. Kishan Rao">
+        <div class="g-tile media-frame reveal" style="--face-x:47%; --face-y:0%">
+          <img src="images/gallery/sketch-gift.jpg" alt="Dr. Kishan Rao receiving a hand drawn portrait from a young patient">
         </div>
         <div class="g-tile media-frame reveal" style="--face-x:78%; --face-y:30%">
           <img src="images/gallery/community-event.jpg" alt="Dr. Kishan Rao">
         </div>
         <div class="g-tile media-frame reveal" style="--face-x:28%; --face-y:20%">
           <img src="images/gallery/cme-memento.jpg" alt="Dr. Kishan Rao">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-x:0%; --face-y:0%">
+          <img src="images/gallery/portrait-scrubs.jpg" alt="Dr. Kishan Rao in surgical scrubs">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:0%">
+          <img src="images/gallery/press-sulya-2023.jpg" alt="Kannada newspaper feature on Dr. Kishan Rao, June 2023">
+        </div>
+        <div class="g-tile media-frame reveal" style="--face-y:0%">
+          <img src="images/gallery/press-namma-arogyadhama.jpg" alt="Kannada newspaper feature on Dr. Kishan Rao and Namma Arogyadhama">
+        </div>
+        <div class="g-tile g-tile--wide media-frame reveal" style="--face-x:50%; --face-y:15%">
+          <img src="images/gallery/graduation-plaque.jpg" alt="Dr. Kishan Rao in a graduation gown with two colleagues, holding a plaque">
         </div>
     </div>
   </div>
