@@ -37,7 +37,7 @@ LOCATIONS = [
         "short": "Mangalore",
         "day": "Monday to Friday",
         "time": "10 am to 1 pm and 3 pm to 6 pm",
-        "map": MAPS + urllib.parse.quote("Bhat's Nursing Home, Mannagudda, Mangaluru, Karnataka"),
+        "map": MAPS + urllib.parse.quote("Bhats Nursing Home") + "&query_place_id=ChIJ-a3HTmdaozsRKxOzKzY2dvA",
     },
     {
         "name": "Adarsha Hospital",
@@ -45,7 +45,7 @@ LOCATIONS = [
         "short": "Puttur",
         "day": "Saturday",
         "time": "9 am to 11 am",
-        "map": MAPS + urllib.parse.quote("APMC Road, Bolwar, Puttur, Karnataka 574201"),
+        "map": MAPS + urllib.parse.quote("Adarsha Hospital Puttur") + "&query_place_id=ChIJe6nWb5u9pDsRcejp98em65o",
     },
     {
         "name": "Namma Arogyadhama",
@@ -53,7 +53,7 @@ LOCATIONS = [
         "short": "Ayyanakatte",
         "day": "Sunday",
         "time": "9 am to 5 pm",
-        "map": MAPS + urllib.parse.quote("Ayyanakatte, near Bellare, Sullia Taluk, Karnataka"),
+        "map": MAPS + urllib.parse.quote("Namma Arogyadhama Multispeciality Medical Centre Ayyanakatte") + "&query_place_id=ChIJaW84ARTtpDsRGAdTR_R30yY",
     },
 ]
 
