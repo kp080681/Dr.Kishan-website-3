@@ -2,7 +2,7 @@
 """
 Builds the Google Ads landing pages from one template.
 
-Design rule: the page has one job, a tap on Call or WhatsApp.
+Design rule: the page has one job, a tap on WhatsApp.
 Everything above the fold is the keyword, one human line and two buttons.
 Explanations live in collapsed questions, so they stay on the page for
 Google and for patients who want depth, but nobody is forced to read them.
@@ -24,8 +24,6 @@ from string import Template
 
 ROOT = Path(__file__).resolve().parent.parent
 
-PHONE_DISPLAY = "+91 81052 32787"
-PHONE_TEL = "+918105232787"
 WA_NUMBER = "918105232787"
 CLINIC = "Dr. Kishan's Surgical Care"
 DOCTOR = "Dr. Kishan Rao"
@@ -65,7 +63,7 @@ QA_LASER = ("Is LASER treatment right for everyone?",
 QA_COST = ("What will it cost?",
            "Cost depends on your condition, the treatment advised and the hospital. After your assessment you will be guided on what to expect before you decide anything.")
 QA_BOOK = ("How do I book, and what should I bring?",
-           f"Call {PHONE_DISPLAY} or send a WhatsApp message, and we will confirm your day, time and location. Bring any earlier reports, scans and prescriptions, and a list of the medicines you take.")
+           "Send us a WhatsApp message and we will confirm your day, time and location. Bring any earlier reports, scans and prescriptions, and a list of the medicines you take.")
 
 STEPS = [
     ("Careful examination", "Heard first, examined with respect for your privacy."),
@@ -83,14 +81,14 @@ PAGES = {
     "piles": {
         "file": "piles.html",
         "title": f"Piles Treatment in Mangalore | LASER Options | {CLINIC}",
-        "meta": "Piles treatment in Mangalore, including LASER options. A careful examination, a clear plan, and surgery only when it is truly needed. Call or WhatsApp to book.",
+        "meta": "Piles treatment in Mangalore, including LASER options. A careful examination, a clear plan, and surgery only when it is truly needed. WhatsApp to book.",
         "eyebrow": "Piles treatment in Mangalore",
         "h1": "Piles, handled with discretion and care.",
         "lead1": "Common, personal, and nothing to be embarrassed about.",
         "lead2": "A careful examination, a clear plan, and surgery only when truly needed.",
         "lead2_standard": f"Meet {DOCTOR} for a careful examination, a clear plan, and surgery only when truly needed.",
         "micro_laser": "LASER treatment options for suitable cases",
-        "wa": "Hello, I would like to book a consultation for piles.",
+        "wa": "Hello, I would like to book a consultation for piles. Please share the available days and timings.",
         "familiar": [
             "Bleeding during bowel movements",
             "Itching or discomfort around the anus",
@@ -115,14 +113,14 @@ PAGES = {
     "fistula": {
         "file": "fistula.html",
         "title": f"Fistula Treatment in Mangalore | LASER Options | {CLINIC}",
-        "meta": "Fistula treatment in Mangalore, with LASER options in selected cases. A careful examination, a clear plan, surgery only when truly needed. Call or WhatsApp to book.",
+        "meta": "Fistula treatment in Mangalore, with LASER options in selected cases. A careful examination, a clear plan, surgery only when truly needed. WhatsApp to book.",
         "eyebrow": "Fistula treatment in Mangalore",
         "h1": "Fistula, handled with discretion and care.",
         "lead1": "Personal, and nothing to be embarrassed about.",
         "lead2": "A careful examination, a clear plan, and surgery only when truly needed.",
         "lead2_standard": f"Meet {DOCTOR} for a careful examination, a clear plan, and surgery only when truly needed.",
         "micro_laser": "LASER treatment may be considered in selected cases",
-        "wa": "Hello, I would like to book a consultation for a fistula.",
+        "wa": "Hello, I would like to book a consultation for a fistula. Please share the available days and timings.",
         "familiar": [
             "Repeated swelling or pain near the anus",
             "Discharge or irritation",
@@ -146,14 +144,14 @@ PAGES = {
     "varicose-veins": {
         "file": "varicose-veins.html",
         "title": f"Varicose Veins Treatment in Mangalore | LASER (EVLA) | {CLINIC}",
-        "meta": "Varicose veins treatment in Mangalore, including LASER (EVLA) where suitable. A clear diagnosis and a plan that fits you. Call or WhatsApp to book.",
+        "meta": "Varicose veins treatment in Mangalore, including LASER (EVLA) where suitable. A clear diagnosis and a plan that fits you. WhatsApp to book.",
         "eyebrow": "Varicose veins treatment in Mangalore",
         "h1": "Varicose veins, assessed with clarity and care.",
         "lead1": "Heavy, aching legs and visible veins deserve a proper assessment.",
         "lead2": "A clear diagnosis and a treatment plan that fits you.",
         "lead2_standard": f"Meet {DOCTOR} for a clear diagnosis and a treatment plan that fits you.",
         "micro_laser": "LASER treatment (EVLA) where suitable",
-        "wa": "Hello, I would like to book a consultation for varicose veins.",
+        "wa": "Hello, I would like to book a consultation for varicose veins. Please share the available days and timings.",
         "familiar": [
             "Visible, bulging veins",
             "Aching or heaviness in the legs",
@@ -277,7 +275,7 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
 .band{background:var(--ivory-100);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;text-align:center}
 .band h2{font-size:clamp(25px,4.6vw,32px)}
 .band p{margin:8px auto 0;max-width:30em;font-size:17.5px;color:#2f3c37}
-.band .ctas{max-width:460px;margin:20px auto 0}
+.band .ctas{max-width:360px;margin:20px auto 0}
 
 /* draft ribbon and review index (preview builds only) */
 .draft{background:var(--brass-600);color:#fff;text-align:center;font:600 13px/1.4 'Inter',sans-serif;padding:8px 14px}
@@ -300,8 +298,7 @@ details p{padding:0 8px 18px 0;font-size:16.5px;color:#30403a;max-width:46em}
 .js .sticky.on{transform:none}
 
 @media(min-width:520px){
-  .ctas{grid-template-columns:auto auto;justify-content:start}
-  .band .ctas{grid-template-columns:1fr 1fr}
+  .ctas{justify-content:start}
 }
 @media(min-width:700px){
   .top .btn{display:inline-flex}
@@ -370,22 +367,16 @@ def wa_url(text):
     return f"https://wa.me/{WA_NUMBER}?text=" + urllib.parse.quote(text)
 
 
-def call_btn(loc, primary=True, label=None):
-    cls = "btn btn-primary" if primary else "btn btn-ghost"
-    text = label or f"Call {PHONE_DISPLAY}"
-    return f'<a class="{cls}" href="tel:{PHONE_TEL}" data-conv="call" data-loc="{loc}">{ICON_PHONE}<span>{e(text)}</span></a>'
-
-
-def wa_btn(loc, wa_text, primary=False, label="WhatsApp Us"):
+def wa_btn(loc, wa_text, primary=True, label="Book on WhatsApp"):
     cls = "btn btn-primary" if primary else "btn btn-ghost"
     return f'<a class="{cls}" href="{e(wa_url(wa_text))}" target="_blank" rel="noopener" data-conv="whatsapp" data-loc="{loc}">{ICON_WA}<span>{e(label)}</span></a>'
 
 
-def cta_pair(p, loc):
-    return f'<div class="ctas">{call_btn(loc, True)}{wa_btn(loc, p["wa"])}</div>'
+def cta(p, loc):
+    return f'<div class="ctas">{wa_btn(loc, p["wa"])}</div>'
 
 
-def header(version):
+def header(p, version):
     if version == "standard":
         name, sub = DOCTOR, SPECIALTY
     else:
@@ -396,7 +387,7 @@ def header(version):
       <img src="/images/brand/logo-lp.png" alt="" width="42" height="44">
       <div><b>{e(name)}</b><span>{e(sub)}</span></div>
     </a>
-    {call_btn("header", True, "Call Now")}
+    {wa_btn("header", p["wa"])}
   </div>
 </header>"""
 
@@ -408,7 +399,7 @@ def schedule_card():
     return f"""<aside class="card sched" aria-label="When you can visit">
   <h2>When you can visit</h2>
   <ul>{rows}</ul>
-  <p>Consultations are by appointment. Please call or WhatsApp to confirm your slot.</p>
+  <p>Consultations are by appointment. Please WhatsApp us to confirm your slot.</p>
 </aside>"""
 
 
@@ -420,7 +411,7 @@ def hero(p, version):
       <p class="eyebrow">{e(p["eyebrow"])}</p>
       <h1>{e(p["h1"])}</h1>
       <p class="lead"><b>{e(p["lead1"])}</b>{e(lead2)}</p>
-      {cta_pair(p, "hero")}
+      {cta(p, "hero")}
       <p class="micro">
         <span>{ICON_CHECK}Private, respectful consultations by appointment</span>
         <span>{ICON_CHECK}{e(p["micro_laser"])}</span>
@@ -439,7 +430,7 @@ def familiar(p):
     <h2>Does this sound familiar?</h2>
     <ul class="tick-list">{items}</ul>
     <p class="note">{e(p["note"])}</p>
-    {cta_pair(p, "mid")}
+    {cta(p, "mid")}
   </div>
 </section>"""
 
@@ -478,7 +469,7 @@ def where():
   <div class="wrap">
     <h2>Where and when</h2>
     <div class="where">{rows}</div>
-    <p class="fine">Consultations are by appointment. Timings can change, so please call or WhatsApp to confirm before you visit.</p>
+    <p class="fine">Consultations are by appointment. Timings can change, so please WhatsApp us to confirm before you visit.</p>
   </div>
 </section>"""
 
@@ -503,8 +494,8 @@ def closing(p):
     return f"""<section class="band">
   <div class="wrap">
     <h2>Take the first step today</h2>
-    <p>One call or one WhatsApp message is all it takes.</p>
-    {cta_pair(p, "close")}
+    <p>One WhatsApp message is all it takes.</p>
+    {cta(p, "close")}
   </div>
 </section>"""
 
@@ -520,17 +511,16 @@ def footer():
 
 def sticky(p):
     return f"""<div class="sticky">
-  {call_btn("sticky", True, "Call Now")}
-  {wa_btn("sticky", p["wa"], False, "WhatsApp")}
+  {wa_btn("sticky", p["wa"])}
 </div>"""
 
 
-DRAFT_BANNER = "Draft for Dr. Kishan's approval. Not live. The Call and WhatsApp buttons work."
+DRAFT_BANNER = "Draft for Dr. Kishan's approval. Not live. The WhatsApp buttons work."
 
 
 def build(key, version, out_dir="", preview=False):
     p = PAGES[key]
-    parts = [header(version), hero(p, version), familiar(p), visit(p, version), where(), questions(p), closing(p), footer(), sticky(p)]
+    parts = [header(p, version), hero(p, version), familiar(p), visit(p, version), where(), questions(p), closing(p), footer(), sticky(p)]
     if preview:
         parts.insert(0, f'<div class="draft">{e(DRAFT_BANNER)}</div>')
     body = "\n".join(parts)
@@ -566,7 +556,7 @@ def build_index(out_dir):
     <h1>Your three landing pages</h1>
     <p class="lead"><b>Please open each page on your phone, the way a patient will see it.</b>Tell us what you approve and what you would like changed. Nothing goes live until you say so.</p>
     <div class="idx">{cards}</div>
-    <p class="fine">The Call and WhatsApp buttons on these pages are live, so they will reach your clinic number.</p>
+    <p class="fine">The WhatsApp buttons on these pages are live, so they will reach your clinic number.</p>
   </div>
 </section>"""
     out = BASE.substitute(title=e("Landing pages for review | " + CLINIC), meta=e("Draft landing pages for review."),

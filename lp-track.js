@@ -1,11 +1,11 @@
-/* Landing page tracking. Edit the four values below once, all pages pick them up.
-   Leave a value empty and that part stays switched off. Personalised ads
-   signals are turned off on purpose: Google does not allow remarketing on
+/* Landing page tracking. Edit the three values below once, all pages pick them up.
+   Leave a value empty and that part stays switched off. The only call to action
+   on the pages is WhatsApp, so there is one conversion to track. Personalised
+   ads signals are turned off on purpose: Google does not allow remarketing on
    health conditions. */
 (function () {
   var CONFIG = {
     adsId: '',          // Google Ads tag, looks like AW-1234567890
-    callLabel: '',      // conversion label for the Call button
     whatsappLabel: '',  // conversion label for the WhatsApp button
     ga4Id: ''           // optional, looks like G-XXXXXXXXXX
   };
@@ -28,10 +28,8 @@
   document.addEventListener('click', function (e) {
     var el = e.target.closest ? e.target.closest('[data-conv]') : null;
     if (!el || !id) return;
-    var type = el.getAttribute('data-conv');
     var where = el.getAttribute('data-loc') || '';
-    var label = type === 'call' ? CONFIG.callLabel : CONFIG.whatsappLabel;
-    if (CONFIG.adsId && label) gtag('event', 'conversion', { send_to: CONFIG.adsId + '/' + label });
-    gtag('event', type + '_click', { location: where });
+    if (CONFIG.adsId && CONFIG.whatsappLabel) gtag('event', 'conversion', { send_to: CONFIG.adsId + '/' + CONFIG.whatsappLabel });
+    gtag('event', 'whatsapp_click', { location: where });
   }, true);
 })();
