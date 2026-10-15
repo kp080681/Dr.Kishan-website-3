@@ -124,7 +124,7 @@
 
   /* ---------- HERO: single merged canvas ---------- */
   .hero{
-    position:relative;
+    position:relative; padding:0;
     min-height:calc(100vh - var(--header-h));
     max-height:920px;
     display:grid;
@@ -139,7 +139,7 @@
     max-height:920px;
   }
   .hero-media img{
-    width:60%; height:100%; margin-left:auto;
+    position:absolute; top:0; right:0; width:60%; height:100%;
     object-fit:cover;
     object-position:50% 4%;
     animation:slowZoom 20s ease-out forwards;
@@ -269,7 +269,7 @@
     .hero{ min-height:auto; max-height:none; display:block; }
     .hero-media{ height:56vh; min-height:380px; max-height:600px; }
     .hero-media img{
-      width:100%; margin-left:0;
+      left:0; width:100%;
       object-position:50% 0%;
       -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
